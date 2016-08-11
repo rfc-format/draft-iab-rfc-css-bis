@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <?xml-stylesheet type="text/xsl" href="rfc2629.xslt" ?>
+
+<!DOCTYPE rfc SYSTEM "rfc2629.dtd" [
+<!ENTITY RFC5741 SYSTEM "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.5741.xml">
+<!ENTITY RFC7322 SYSTEM "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.7322.xml">
+<!ENTITY I-D.iab-html-rfc SYSTEM "http://xml2rfc.ietf.org/public/rfc/bibxml3/reference.I-D.iab-html-rfc.xml">
+<!ENTITY I-D.iab-rfc-framework SYSTEM "http://xml2rfc.ietf.org/public/rfc/bibxml3/reference.I-D.iab-rfc-framework.xml">
+]>
+
+<rfc ipr="trust200902" docName="draft-iab-rfc-css-01" category="info">
+
+<?rfc toc="yes"?>
+
+  <front>
+    <title abbrev="I-D">CSS Requirements for RFCs</title>
+
+    <author initials="H." surname="Flanagan" fullname="Heather Flanagan">
+      <organization>RFC Editor</organization>
+      <address>
+        <email>rse@rfc-editor.org</email>
+        <uri>http://orcid.org/0000-0002-2647-2220</uri> 
+      </address>
+    </author>
+
+    <date year="2016" month="July" day="4"/>
+    
+    <area>General</area>
+
+    <workgroup>Internet Architecture Board</workgroup>
+
+    <abstract>
+
+
+<t>The HTML format for RFCs, described in <xref target="I-D.iab-html-rfc"/> assigns style guidance to an RFC Editor-defined Cascading Style Sheet (CSS).  The embedded, default CSS as included by the RFC Editor is expected to take into account accessibility needs and be built along a responsive design model.  This document describes the requirements for the default CSS used by the RFC Editor. The class names are based on the classes defined in draft-iab-html-rfc. </t> 
+
+<t>Discussion of this draft takes place on the rfc-interest mailing list (rfc-interest@rfc-editor.org), which has its home page at https://www.rfc-editor.org/mailman/listinfo/rfc-interest.</t>
+
+
+
+    </abstract>
+
+
+  </front>
+
+  <middle>
+
+
+<section anchor="introduction" title="Introduction">
+
+<t>The HTML format for RFCs, described in <xref target="I-D.iab-html-rfc"/> assigns style guidance to an RFC Editor-defined Cascading Style Sheet (CSS).  This CSS will be embedded in the published HTML, and may be overridden by a locally defined CSS as desired.  The embedded, default CSS as included by the RFC Editor is expected to take into account accessibility needs and be built along a responsive design model.</t>
+
+<t>This document describes the requirements for the default CSS used by the RFC Editor. Unless called out otherwise, any styling provided for these classes must not alter the natural language content in any visible way.  Many of these classes are provided to mark the elements semantically: elements using them should simply inherit their surrounding styling. Exceptions are called out below. A class is identified for Internet Drafts, such that certain features found only in I-Ds may be made distinct in some fashion within those drafts.  The requirements will only be applied to HTML documents published by the RFC Editor as per <xref target="I-D.iab-rfc-framework"/>.</t>
+
+<t>The details described in this document are expected to change based on experience gained in implementing the RFC production center's toolset. Revised documents will be published capturing those changes as the toolset is completed. Other implementers must not expect those changes to remain backwards-compatible with the details described in this document.</t>
+
+</section>
+<section anchor="design-goals" title="Design Goal">
+
+<t>RFCs must be adaptable to a wide variety of devices and displays, accessible to assisted readers, and printable.</t>
+
+</section>
+<section anchor="general-requirements" title="General Requirements">
+
+<t><list style='symbols'>
+  <t>Support the display of the semantic HTML described in <xref target="I-D.iab-html-rfc"/>.</t>
+  <t>Follow best practice for accessibility, as defined by the W3C's "Best Practices for Authoring HTML" <xref target="HTMLBP"/>.</t>
+  <t>Follow best practice for mobile devices, as defined by the W3C's "Best Practices for Authoring HTML."</t>
+  <t>Allow for a broad range of internationalized scripts.</t>
+</list></t>
+
+</section>
+<section anchor="page-layout" title="Page Layout">
+
+<section anchor="title-page-header" title="Title Page Header">
+
+<t>The document header must be at the top of the document and include all information described in the "Style Guide" and "RFC Streams, Headers, and Boilerplates" <xref target="RFC7322"/> <xref target="RFC5741"/></t>
+
+</section>
+<section anchor="body" title="Body">
+
+<t>The body of the document must conform to the following:</t>
+
+<t><list style='symbols'>
+  <t>Examples and code blocks must be in a fixed-width font</t>
+  <t>ASCII art must be in a fixed-width font</t>
+  <t>Reflow the text as the screen gets smaller and limit max width </t>
+  <t>Block quotes must be indented </t>
+  <t>Tables must allow for distinct header rows</t>
+  <t>Paragraphs should include a hover-over paragraph identifier</t>
+</list></t>
+  <t>All anchor tags and URLs should be clearly distinguished as links, for example through the use of color and/or text decoration, following appropriate accessibility standards.</t>
+
+</section>
+<section anchor="font-choices" title="Font Choices">
+
+<t><list style='symbols'>
+  <t>Default to a sans-serif font family with broad Unicode support for web browser viewing.</t>
+  <t>Default to a serif font family with broad Unicode support for printing.</t>
+  <t>A fixed-width font must be used for code and artwork-tagged sections.</t>
+  <t>All fonts should be publicly licensed and supported by all major web browsers.</t>
+</list></t>
+
+</section>
+</section>
+<section anchor="printing" title="Printing">
+
+<t>The CSS must include support for a printer-friendly output.  The print rules should be a part of the embedded style sheet; consumers of an RFC may develop their own print-specific style sheet as desired.</t>
+
+</section>
+<section anchor="lists" title="Lists">
+  <t>Lists should provide ample whitespace between list elements for legibility unless a ‘compact’ class is specified (e.g., .dlCompact, .ulCompact, .olCompact).</t>
+</section>
+
+<section anchor="css-classes" title="CSS Classes and Attributes">
+<t>This section describes the CSS classes that result in specific changes to the natural language content of a document. A full list of available classes, not including basic selectors, are included in "Appendix A".</t>
+
+  <section anchor="alignCenter" title=".alignCenter">
+   <t>To be used with '.artwork' to indicate the figure should align in the center of the page flow.</t>
+  </section>
+
+  <section anchor="alignRight" title=".alignRight">
+   <t>To be used with '.artwork' to indicate the figure should align on the right of the page flow.</t>
+  </section>
+
+  <section anchor="artwork" title=".artwork">
+  <t>These classes will mostly be styled as part of .artwork.  Specific
+  classes may include '.art-ascii-art' and '.art-svg'. Artwork will be held 
+  in its own block of space, centered in the page flow, and will not float. 
+  Images should have a max width of 100% so views will scale properly across
+  a variety of screens and devices.</t>
+
+    <section anchor="art-ascii-art" title=".art-ascii-art">
+    <t>Must use a mono-spaced font.</t>
+    </section>
+
+    <section anchor="art-logo" title=".art-logo">
+    <t>No visible changes to the natural language content; keep in default style. Note that such images are not currently allowed in RFCs.</t>
+    </section>
+  </section>
+
+
+  <section anchor="cref" title=".cref">
+    <t>A comment within an I-D; should be visually distinct.</t>
+    <t>For I-Ds only; not for RFCs.</t>
+  </section>
+
+  <section anchor="crefAnchor" title=".crefAnchor">
+    <t>A comment within an I-D; should be visually distinct.</t>
+    <t>For I-Ds only; not for RFCs.</t>
+  </section>
+
+  <section anchor="crefSource" title=".crefSource">
+    <t>A comment within an I-D; should be visually distinct.</t>
+    <t>For I-Ds only; not for RFCs.</t>
+  </section>
+
+  <section anchor="dlCompact" title=".dlCompact">
+    <t>Use less spacing on a definition list than the default.</t>
+  </section>
+
+  <section anchor="dlHanging" title=".dlHanging">
+    <t>Use the standard hanging indent for a definition list; indent terms.</t>
+  </section>
+
+  <section anchor="dlParallel" title=".dlParallel">
+    <t>Do not use the standard hanging indent for a definition list; align terms and definitions along left side.</t>
+  </section>
+
+  <section anchor="docInfo" title=".docInfo">
+    <t>Hide from visible content.</t>
+  </section>
+
+  <section anchor="eref" title=".eref">
+    <t>Standard link formatting (underlined, change in color).</t>
+  </section>
+
+  <section anchor="finalized" title=".finalized">
+    <t>Hide from visible content.</t>
+  </section>
+
+  <section anchor="note" title=".note"> 
+    <t>Notes should be emphasized and distinct from normal paragraph text.
+    </t>
+    <section anchor="rfcEditorRemove" title=".rfcEditorRemove">
+      <t>An RFC Editor note may be added after the standard boilerplage. It should be visually distinct to highlight final removal of the note by the RFC Editor.</t>
+    </section>
+  </section>
+
+  <section anchor="olCompact" title=".olCompact">
+    <t>Use less spacing on a numbered list than the default.</t>
+  </section>
+
+  <section anchor="olPercent" title=".olPercent">
+    <t>If the style attribute from the source XML contains a percent sign, 
+       a particular style setting will be required to make this setting 
+       behave like an HTML ordered list.</t>
+  </section>
+
+  <section anchor="pilcrow" title=".pilcrow">
+    <t>Pilcrows, when used as described in draft-iab-html-rfc, should 
+       appear at the end of the paragraph, artwork, or sourcecode segment. 
+       They should not appear until moused-over. They should not show when 
+       printed, and should not be selected when copied with a copy/paste 
+       function.</t>
+  </section>
+
+  <section anchor="relref" title=".relref">
+    <t>Should be clearly distinguished as links.</t>
+  </section>
+
+  <section anchor="rendered" title=".rendered">
+    <t>Hide from visible content.</t>
+  </section>
+
+  <section anchor="sourcecode" title=".sourcecode">
+    <t>Code examples or components should be in a fixed-width font if the 
+       human language used has an available fixed-width font option, and 
+       should be visually distinct. If no fixed-width font is available, 
+       use the default font for that human language.</t>
+  </section>
+
+  <section anchor="toc" title=".toc">
+    <t>The table of contents should be clearly distinguished using an indented, ordered list with the list style set to 'none', allowing for hyperlinked, in-line dotted number notation (e.g., 1., 1.1., 1.1.1.).</t>
+  </section>
+
+  <section anchor="type" title=".type">
+    <t>No visible changes to the natural language content; keep in default style.</t>
+  </section>
+
+  <section anchor="ulCompact" title=".ulCompact">
+    <t>Use less spacing on a bulleted list than the default.</t>
+  </section>
+
+  <section anchor="ulEmpty" title=".ulEmpty">
+    <t>Indent from the margin of the previous paragraph.</t>
+  </section>
+
+  <section anchor="url" title=".url">
+    <t>Should be clearly distinguished as links.</t>
+  </section>
+
+  <section anchor="xref" title=".xref">
+    <t>Should be clearly distinguished as links.</t>
+  </section>
+
+</section>
+
+
+<section anchor="security-considerations" title="Security Considerations">
+
+<t>Security vulnerabilities can be introduced through the CSS.  How much detail do we need to go into here to say "don't do foolish things and introduce security issues?"</t>
+
+</section>
+
+<section anchor="iana-considerations" title="IANA Considerations">
+
+<t>This draft contains no action for IANA</t>
+
+</section>
+<section anchor="acknowledgements" title="Acknowledgements">
+<t>With many thanks to the RFC Format Design Team for their efforts in making this transition successful: Nevil Brownlee (ISE), Tony Hansen, Joe Hildebrand, Paul Hoffman, Ted Lemon, Julian Reschke, Adam Roach, Alice Russo, Robert Sparks (Tools Team liaison), and Dave Thaler.</t>
+<t>Additional thanks to Arlen Johnson of Spherical Cow Group, LLC, for his assistance in clarifying the requirements in more CSS designer-friendly language.</t>
+
+</section>
+
+<section anchor="change-log" title="Draft Change Log">
+<t>To be removed before publication</t>
+<section anchor="draft-iab-rfc-css-01" title="Changes from draft-iab-rfc-css-00 to -01">
+<t>added .refInstance, .ulEmpty, .ears, .left, .right, .center as per HTML draft</t>
+<t>removed .comma, .closeParen, .openParen, .fullStop, .referenceGroup as per HTML draft</t>
+</section>
+<section anchor="change-to-iab" title="Changes from draft-flanagan-rfc-css to draft-iab-rfc-css">
+<t>revised draft name; no major changes</t>
+</section>
+<section anchor="change-03" title="Changes from -02 to -03">
+<t>Moved Appendix to correct location; fixed typos; moved lang-* to Appendix,</t>
+</section>
+<section anchor="change-02" title="Changes from -01 to -02">
+<t>Adjusted class names where possible to a common naming pattern (CamelCase).</t>
+<t>Added alignCenter, alignRight, dlHanging, ulEmpty</t>
+</section>
+<section anchor="change-01" title="Changes from -00 to -01">
+<t>Moved full list of classes to Appendix; only discussed classes that will have visible changes to the text in the body</t>
+<t>Introduction: text regarding expected future changes added.</t>
+<t>Body: added text regarding anchors and tags; this text also applied to .relref, .url, .xref</t>
+<t>Artwork: clarified non-floating behavior of artwork</t>
+<t>List behavior: clarified the behavior of .ulCompact, .olCompact, and .dlCompact as distinct from default list behavior; clarified behavior of .dlparallel</t>
+<t>Note: clarified text around behavior of notes</t>
+<t>RFC: added additional class to allow the CSS to distinguish between RFCs and Internet Drafts if desired</t>
+<t>TOC: clarified text around behavior of table of contents</t>
+</section>
+</section>
+
+  </middle>
+
+  <back>
+
+    <references title='Normative References'>
+
+<reference anchor="HTMLBP" target="http://www.w3.org/standards/techs/htmlbp">
+  <front>
+    <title>Best Practices for Authoring HTML Current Status</title>
+    <author >
+      <organization>W3C</organization>
+    </author>
+    <date year="n.d."/>
+  </front>
+</reference>
+&RFC5741;
+&RFC7322;
+&I-D.iab-html-rfc;
+&I-D.iab-rfc-framework;
+
+
+    </references>
+
+<section anchor="appendix-a" title="List of classes">
+<t>This section lists all the CSS classes. Except for those also listed
+above in section 7, none of these result in specific changes to the
+natural language content of a document.</t>
+<t>
+<list style="symbols">
+<t>.adr</t>
+<t>.alignCenter</t>
+<t>.alignRight</t>
+<t>.annotation</t>
+<t>.artwork
+<list style='empty'>
+<t>.art-ascii-art</t>
+<t>.art-logo</t>
+<t>.art-svg</t>
+</list>
+</t>
+<t>.ascii</t>
+<t>.author</t>
+<t>.authors</t>
+<t>.bcp14</t>
+<t>.center</t>
+<t>.city</t>
+<t>.compact</t>
+<t>.country-name</t>
+<t>.cref</t>
+<t>.crefAnchor</t>
+<t>.crefSource</t>
+<t>.dlCompact</t>
+<t>.dlHanging</t>
+<t>.dlParallel</t>
+<t>.docInfo</t>
+<t>.ears</t>
+<t>.email</t>
+<t>.eref</t>
+<t>.finalized</t>
+<t>.fn</t>
+<t>.index</t>
+<t>.indexChar</t>
+<t>.indexIndex</t>
+<t>.indexItem</t>
+<t>.indexPrimary</t>
+<t>.indexSubItem</t>
+<t>.initial</t>
+<t>.iref</t>
+<t>.irefItem</t>
+<t>.irefRefs</t>
+<t>.irefSubItem</t>
+<t>.label</t>
+<t>.left</t>
+<t>.locality</t>
+<t>.nameRole</t>
+<t>.note
+<list style="empty">
+<t>.rfcEditorRemove</t>
+</list>
+</t>
+<t>.olCompact</t>
+<t>.olPercent</t>
+<t>.org</t>
+<t>.organization</t>
+<t>.pilcrow</t>
+<t>.postal-code</t>
+<t>.published</t>
+<t>.refContent</t>
+<t>.refDate</t>
+<t>.refInstance</t>
+<t>.refTitle</t>
+<t>.reference</t>
+<t>.region</t>
+<t>.relref</t>
+<t>.rendered</t>
+<t>.RFC</t>
+<t>.rfcEditorRemove</t>
+<t>.right</t>
+<t>.role</t>
+<t>.selfRef</t>
+<t>.series</t>
+<t>.seriesInfo</t>
+<t>.sourcecode
+<list style="empty">
+<t>.lang-*</t>
+</list>
+</t>
+<t>.street-address</t>
+<t>.status</t>
+<t>.street-address</t>
+<t>.surname</t>
+<t>.tel</t>
+<t>.toc</t>
+<t>.type</t>
+<t>.ulCompact</t>
+<t>.ulEmpty</t>
+<t>.url</t>
+<t>.workgroup</t>
+<t>.xref</t>
+<t>.vcard</t>
+</list>
+</t>
+</section>
+
+
+  </back>
+</rfc>
+
+
