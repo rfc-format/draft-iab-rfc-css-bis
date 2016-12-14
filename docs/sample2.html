@@ -7,7 +7,7 @@
     <meta content="internationalization, i18n" name="keywords">
     <meta content="This document describes methods for handling Unicode strings
    representing memorable, human-friendly names (called 'nicknames',
-   "display names", or "petnames") for people, devices, accounts,
+   &amp;display names&amp;, or &amp;petnames&amp;) for people, devices, accounts,
    websites, and other entities."
           name="description">
     <title>
@@ -53,8 +53,8 @@
       <dt>Authors:</dt>
       <dd class="authors">
         <div class="author">
-          <div class="author-name">P. Saint-Andre</span></div>
-          <div class="org">&yet</span></div>
+          <div class="author-name">P. Saint-Andre</div>
+          <div class="org">&amp;yet</div>
         </div>
       </dd>
     </dl>
@@ -138,7 +138,7 @@
      <ul class="toc">
         <li class="toc"><a href="#s-5">5</a>. <a href="#n-iana">IANA Considerations</a></li>
      </ul>
-     <ul class="toc"
+     <ul class="toc">
         <li class="toc"><a href="#s-6">6</a>. <a href="#n-security">Security Considerations</a></li>
         <ul class="toc">
           <li class="toc"><a href="#s-6.1">6.1</a>. <a href="#n-reuse-precis">Reuse of PRECIS</a></li>
@@ -171,7 +171,7 @@
           <a class="selfRef" href="#s-1.1">1.1.</a>
           <a class="selfRef"
              href="#n-sub-section-overview">Overview</a>
-             <span class="iref" id="i-Overview">
+          <span class="iref" id="i-Overview"></span>
         </h3>
         <p id="s-1.1-1"> A
         number of technologies and applications provide the ability for a person
@@ -216,7 +216,7 @@
         The rules specified in this document can be applied in all of the
         foregoing contexts. </p>
 
-         To
+        <p>To
         increase the likelihood that memorable, human-friendly names will work
         in ways that make sense for typical users throughout the world, this
         document defines rules for preparing, enforcing, and comparing
@@ -229,7 +229,7 @@
           <a class="selfRef" href="#s-1.2">1.2.</a>
           <a class="selfRef"
              href="#n-sub-section-terminology">Terminology</a>
-             <span class="iref" id="i-Terminology">
+          <span class="iref" id="i-Terminology"></span>
         </h3>
          <p id="s-1.2-1">Many important terms used in this document are defined
          in [<a class="xref" href="#RFC7564">RFC7564</a>], [<a class="xref"
@@ -255,7 +255,7 @@
              <a class="selfRef" href="#s-2.1">2.1.</a>
              <a class="selfRef"
                 href="#n-sub-section-Rules">Rules</a>
-                <span class="iref" id="i-Rules">
+             <span class="iref" id="i-Rules"></span>
             </h3>
               <p id="s-2.1-1">The following rules apply within the Nickname
               profile of the PRECIS FreeformClass.<a class="pilcrow"
@@ -334,7 +334,7 @@
                   <a class="selfRef" href="#s-2.2">2.2.</a>
                   <a class="selfRef"
                      href="#n-sub-section-Preparation">Preparation</a>
-                     <span class="iref" id="i-Preparation">
+                  <span class="iref" id="i-Preparation"></span>
                  </h3>
                    <p id="s-2.2-1">An entity that prepares a string for
                    subsequent enforcement according to this profile MUST ensure
@@ -351,7 +351,7 @@
                   <a class="selfRef" href="#s-2.3">2.3.</a>
                   <a class="selfRef"
                      href="#n-sub-section-Enforcement">Enforcement</a>
-                     <span class="iref" id="i-Enforcement">
+                  <span class="iref" id="i-Enforcement"></span>
                  </h3>
                    <p id="s-2.3-1">An entity that performs enforcement according
                    to this profile MUST prepare a string as described in Section
@@ -385,7 +385,7 @@
                   <a class="selfRef" href="#s-2.4">2.4.</a>
                   <a class="selfRef"
                      href="#n-sub-section-Comparison">Comparison</a>
-                     <span class="iref" id="i-Comparison">
+                  <span class="iref" id="i-Comparison"></span>
                  </h3>
                    <p id="s-2.4-1">   An entity that performs comparison of two
                    strings according to this profile MUST prepare each string as
@@ -421,7 +421,7 @@
         <p id="s-3-1">The following examples illustrate a small number of
         nicknames that are consistent with the format defined above, along with
         the output string resulting from application of the PRECIS rules (note
-        that the characters < and > are used to delineate the actual nickname
+        that the characters &lt; and &gt; are used to delineate the actual nickname
         and are not part of the nickname strings).<a class="pilcrow"
         href="#s-3-1">¶</a></p>
 
@@ -608,7 +608,7 @@
           <a class="selfRef" href="#s-6.1">6.1</a>
           <a class="selfRef"
              href="#n-sub-section-reuse-precis">Reuse of PRECIS</a>
-             <span class="iref" id="i-reuse">
+          <span class="iref" id="i-reuse"></span>
          </h3>
          <p id="s-6-1.1">The security considerations described in [<a
          class="xref" href="#RFC7564">RFC7546</a>] apply to the FreeformClass
@@ -620,7 +620,7 @@
            <a class="selfRef" href="#s-6.2">6.2</a>
            <a class="selfRef"
               href="#n-sub-section-reuse-unicode">Reuse of Unicode</a>
-              <span class="iref" id="i-reuse">
+           <span class="iref" id="i-reuse"></span>
           </h3>
           <p id="s-6-2.1">The security considerations described in [<a
           class="xref" href="UTS39">UTS39</a>] apply to the use of Unicode
@@ -631,7 +631,7 @@
             <a class="selfRef" href="#s-6.3">6.3</a>
             <a class="selfRef"
                href="#n-sub-section-reuse-unicode">Visually Similar Characters</a>
-               <span class="iref" id="i-visually-similar">
+            <span class="iref" id="i-visually-similar"></span>
            </h3>
            <p id="s-6-3.1">[<a class="xref" href="#RFC7564">RFC7564</a>]
            describes some of the security considerations related to visually
@@ -816,7 +816,6 @@
     http://www.skyhunter.com/marcs/petnames/IntroPetNames.html</a>&gt;.
   </dd>
 
-  <dl class="reference">
     <dt id="RFC20">[RFC20]</dt>
     <dd>
       <span class="refAuthor">Cerf, V.</span>,
@@ -838,7 +837,6 @@
     href="https://www.rfc-editor.org/info/rfc20">https://www.rfc-editor.org/info/rfc20</a>&gt;.
   </dd>
 
-  <dl class="reference">
     <dt id="RFC2811">[RFC2811]</dt>
     <dd>
       <span class="refAuthor">Kalt, C.</span>,
@@ -856,7 +854,6 @@
     href="https://www.rfc-editor.org/info/rfc2811">https://www.rfc-editor.org/info/rfc2811</a>&gt;.
   </dd>
 
-  <dl class="reference">
     <dt id="RFC4975">[RFC4975]</dt>
     <dd>
       <span class="refAuthor">Campbell, B.</span>, Ed.,
@@ -876,7 +873,6 @@
     href="https://www.rfc-editor.org/info/rfc4975">https://www.rfc-editor.org/info/rfc4975</a>&gt;.
   </dd>
 
-  <dl class="reference">
     <dt id="RFC5239">[RFC5239]</dt>
     <dd>
       <span class="refAuthor">Barnes, M.</span>,
@@ -896,7 +892,6 @@
     href="https://www.rfc-editor.org/info/rfc5239">https://www.rfc-editor.org/info/rfc5239</a>&gt;.
   </dd>
 
-  <dl class="reference">
     <dt id="RFC5322">[RFC5322]</dt>
     <dd>
       <span class="refAuthor">Resnick, P.</span>, Ed.,
@@ -914,7 +909,6 @@
     href="https://www.rfc-editor.org/info/rfc5322">https://www.rfc-editor.org/info/rfc5322</a>&gt;.
   </dd>
 
-  <dl class="reference">
     <dt id="RFC6120">[RFC6120]</dt>
     <dd>
       <span class="refAuthor">Saint-Andre, P.</span>,
@@ -932,7 +926,6 @@
     href="https://www.rfc-editor.org/info/rfc6120">https://www.rfc-editor.org/info/rfc6120</a>&gt;.
   </dd>
 
-  <dl class="reference">
     <dt id="RFC7701">[RFC7701]</dt>
     <dd>
       <span class="refAuthor">Niemi, A.</span>,
@@ -992,6 +985,7 @@ href="http://xmpp.org/extensions/xep-0045.html">http://xmpp.org/extensions/xep-0
   &lt;<a class="refTarget"
 href="http://xmpp.org/extensions/xep-0172.html">http://xmpp.org/extensions/xep-0172.html</a>&gt;.
 </dd>
+  </dl>
 </section>
 
 <section id="acknowledgements">
@@ -1031,7 +1025,7 @@ href="http://xmpp.org/extensions/xep-0172.html">http://xmpp.org/extensions/xep-0
 <hr class="addr">
 <address class="vcard">
   <div class="nameRole"><span class="fn">Peter Saint-Andre</span></div>
-  <div class="org">&yet</div>
+  <div class="org">&amp;yet</div>
   <div>
     <span>Email:</span>
     <a class="email" href="mailto:peter@andyet.com">
