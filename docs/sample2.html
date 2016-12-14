@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html class="RFC" lang="en">
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+    <meta charset="utf-8">
+    <meta content="Peter Saint-Andre" name="author">
+    <meta content="internationalization, i18n" name="keywords">
+    <meta content="This document describes methods for handling Unicode strings
+   representing memorable, human-friendly names (called 'nicknames',
+   "display names", or "petnames") for people, devices, accounts,
+   websites, and other entities."
+          name="description">
+    <title>
+      Preparation, Enforcement, and Comparison of Internationalized Strings Representing Nicknames
+    </title>
+    <link href="test.3.xml" rel="alternate" type="application/rfc+xml">
+    <link href="https://www.rfc-editor.org/copyright/" rel="license">
+    <link href="xml2rfc.css" rel="stylesheet" type="text/css">
+    <link href="rfc-local.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <table class="ears">
+      <thead>
+        <tr>
+          <td class="left">RFC</td>
+          <td class="center">PRECIS: Nickname</td>
+          <td class="right">December 2015</td>
+        </tr>
+      </thead>
+      <tfoot>
+        <tr>
+          <td class="left">Saint-Andre</td>
+          <td class="center">RFC 7700</td>
+          <td class="right">[Page]</td>
+        </tr>
+      </tfoot>
+    </table>
+    <dl id="identifiers">
+      <dt>Stream:</dt>
+      <dd class="stream">Internet Engineering Task Force (IETF)</dd>
+      <dt>Request for Comments:</dt>
+      <dd class="rfc">7700</dd>
+      <dt>Category:</dt>
+      <dd class="Category">Standards Track</dd>
+      <dt>ISSN:</dt>
+      <dd class="issn">2070-1721</dd>
+      <dt>Published:</dt>
+      <dd>
+        <time class="published" datetime="2015-12">
+          December 2015
+        </time>
+      </dd>
+      <dt>Authors:</dt>
+      <dd class="authors">
+        <div class="author">
+          <div class="author-name">P. Saint-Andre</span></div>
+          <div class="org">&yet</span></div>
+        </div>
+      </dd>
+    </dl>
+    <h1 id="title">
+      Preparation, Enforcement, and Comparison of Internationalized Strings Representing Nicknames
+    </h1>
+    <section id="abstract">
+      <h2>
+        <a class="selfRef" href="#abstract">Abstract</a>
+      </h2>
+      <p id="s-abstract-1">This document describes methods for handling Unicode strings representing memorable, human-friendly names (called "nicknames", "display names", or "petnames") for people, devices, accounts, websites, and other entities.  <a class="pilcrow" href="#s-abstract-1">¶</a></p>
+    </section>
+    <section id="n-status-of-this-memo">
+      <h2 id="s-boilerplate-1">
+        <a class="selfRef" href="#n-status-of-this-memo">
+          Status of this Memo
+        </a>
+      </h2>
+      <p id="s-boilerplate-1-1">
+   This is an Internet Standards Track document.
+
+   This document is a product of the Internet Engineering Task Force
+   (IETF).  It represents the consensus of the IETF community.  It has
+   received public review and has been approved for publication by the
+   Internet Engineering Steering Group (IESG).  Further information on
+   Internet Standards is available in Section 2 of RFC 5741.<a class="pilcrow" href="#s-boilerplate-1-1">¶</a</p>
+
+   <p id="s-boilerplate-1-2">
+   Information about the current status of this document, any errata,
+   and how to provide feedback on it may be obtained at
+   http://www.rfc-editor.org/info/rfc7700.  <a class="pilcrow" href="#s-boilerplate-1-2">¶</a></p>
+    </section>
+    <section id="n-copyright-notice">
+      <h2 id="s-boilerplate-2">
+        <a class="selfRef" href="#n-copyright-notice">
+          Copyright Notice
+        </a>
+      </h2>
+      <p id="s-boilerplate-2-1">Copyright ©2015 IETF Trust and the persons
+      identified as the document authors.  All rights reserved.   <a
+      class="pilcrow" href="#s-boilerplate-2-1">¶</a></p>
+
+      <p id="s-boilerplate-2-2">This document is subject to BCP 78 and the IETF
+      Trust's Legal Provisions Relating to <a class="eref"
+      href="http://trustee.ietf.org/license-info">IETF Documents</a> in effect
+      on the date of publication of this document.  Please review these
+      documents carefully, as they describe your rights and restrictions with
+      respect to this document.  Code Components extracted from this document
+      must include Simplified BSD License text as described in Section 4.e of
+      the Trust Legal Provisions and are provided without warranty as described
+      in the Simplified BSD License. <a class="pilcrow"
+      href="#s-boilerplate-2-2">¶</a></p>
+    </section>
+
+    <h2 id="toc">Table of Contents</h2>
+    <nav class="toc">
+      <ul class="toc">
+        <li class="toc"><a href="#s-1">1</a>. <a href="#n-introduction">Introduction</a></li>
+        <ul class="toc">
+          <li class="toc"><a href="#s-1.1">1.1</a>. <a href="#n-sub-section-overview">Overview</a></li>
+          <li class="toc"><a href="#s-1.2">1.2</a>. <a href="#n-sub-section-terminology">Terminology</a></li>
+         </ul>
+      <ul class="toc">
+        <li class="toc"><a href="#s-2">2</a>. <a href="#n-nickname-profile">Nickname Profile</a></li>
+        <ul class="toc">
+          <li class="toc"><a href="#s-2.1">2.1</a>. <a href="#n-sub-section-rules">Rules</a></li>
+          <li class="toc"><a href="#s-2.2">2.2</a>. <a href="#n-sub-section-preparation">Preparation</a></li>
+          <li class="toc"><a href="#s-2.3">2.3</a>. <a href="#n-sub-section-Enforcement">Enforcement</a></li>
+          <li class="toc"><a href="#s-2.4">2.4</a>. <a href="#n-sub-section-Comparison">Comparison</a></li>
+        </ul>
+     <ul class="toc">
+       <li class="toc"><a href="#s-3">3</a>. <a href="#n-examples">Examples</a></li>
+     </ul>
+     <ul class="toc">
+        <li class="toc"><a href="#s-4">4</a>. <a href="#n-use">Use in Application Protocols</a></li>
+     </ul>
+     <ul class="toc">
+        <li class="toc"><a href="#s-5">5</a>. <a href="#n-iana">IANA Considerations</a></li>
+     </ul>
+     <ul class="toc"
+        <li class="toc"><a href="#s-6">6</a>. <a href="#n-security">Security Considerations</a></li>
+        <ul class="toc">
+          <li class="toc"><a href="#s-6.1">6.1</a>. <a href="#n-reuse-precis">Reuse of PRECIS</a></li>
+          <li class="toc"><a href="#s-6.2">6.2</a>. <a href="#n-reuse-unicode">Reuse of Unicode</a></li>
+          <li class="toc"><a href="#s-6.3">6.3</a>. <a href="#n-visually-similar">Visually Similar Characters</a></li>
+        </ul>
+        <li class="toc">
+          <a href="#acknowledgements">Acknowledgements</a>
+        </li>
+        <li class="toc">
+          <a href="#author-addresses">Authors' Addresses</a>
+        </li>
+      </ul>
+    </nav>
+    <section id="intro">
+      <h2 id="s-1">
+        <a class="selfRef" href="#s-1">1.</a>
+        <a class="selfRef" href="#intro">Introduction</a>
+      </h2>
+      <section id="n-sub-section-overview">
+        <h3 id="s-1.1">
+          <a class="selfRef" href="#s-1.1">1.1.</a>
+          <a class="selfRef"
+             href="#n-sub-section-overview">Overview</a>
+             <span class="iref" id="i-Overview">
+        </h3>
+        <p id="s-1.1-1"> A
+        number of technologies and applications provide the ability for a person
+        to choose a memorable, human-friendly name in a communications context,
+        or to set such a name for another entity such as a device, account,
+        contact, or website.  Such names are variously called "nicknames" (e.g.,
+        in chat room applications), "display names" (e.g., in Internet mail), or
+        "petnames" (see [PETNAME-SYSTEMS]); for consistency, these are all
+        called "nicknames" in this document. <a class="pilcrow"
+        href="#s-1.1-1">¶</a>
+        </p>
+
+        <p id="s-1.1-2">
+        Nicknames are commonly supported in technologies for textual chat rooms,
+        e.g., Internet Relay Chat [RFC2811] and multi-party chat technologies
+        based on the Extensible Messaging and Presence Protocol (XMPP) [RFC6120]
+        [XEP-0045], the Message Session Relay Protocol (MSRP) [RFC4975]
+        [RFC7701], and Centralized Conferencing (XCON) [RFC5239] [XCON-SYSTEM].
+        Recent chat room technologies also allow internationalized nicknames
+        because they support characters from outside the ASCII range [RFC20],
+        typically by means of the Unicode character set [Unicode].  Although
+        such nicknames tend to be used primarily for display purposes, they are
+        sometimes used for programmatic purposes as well (e.g., kicking users or
+        avoiding nickname conflicts).<a class="pilcrow" href="#s-1.1-2">¶</a>
+        </p>
+
+        <p id="s-1.1-3"> A
+        similar usage enables a person to set their own preferred display name
+        or to set a preferred display name for another user (e.g., the
+        "display-name" construct in the Internet message format [RFC5322] and
+        [XEP-0172] in XMPP).<a class="pilcrow" href="#s-1.1-3">¶</a> </p>
+
+        <p id="s-1.1-4">
+        Memorable, human-friendly names are also used in contexts other than
+        personal messaging, such as names for devices (e.g., in a network
+        visualization application), websites (e.g., for bookmarks in a web
+        browser), accounts (e.g., in a web interface for a list of payees in a
+        bank account), people (e.g., in a contact list application), and the
+        like.<a class="pilcrow" href="#s-1.4-1">¶</a> </p>
+
+        <p id="s-1.1-5">
+        The rules specified in this document can be applied in all of the
+        foregoing contexts. </p>
+
+         To
+        increase the likelihood that memorable, human-friendly names will work
+        in ways that make sense for typical users throughout the world, this
+        document defines rules for preparing, enforcing, and comparing
+        internationalized nicknames.<a class="pilcrow" href="#s-1.5-1">¶</a>
+        </p>
+      </section>
+
+      <section id="n-sub-section-overview">
+        <h3 id="s-1.1">
+          <a class="selfRef" href="#s-1.2">1.2.</a>
+          <a class="selfRef"
+             href="#n-sub-section-terminology">Terminology</a>
+             <span class="iref" id="i-Terminology">
+        </h3>
+         <p id="s-1.2-1">Many important terms used in this document are defined
+         in [<a class="xref" href="#RFC7564">RFC7564</a>], [<a class="xref"
+         href="#RFC6365">RFC6365</a>], and [<a class="xref"
+         href="#Unicode">Unicode</a>].<a class="pilcrow"
+         href="#s-1.2-1">¶</a></p>
+
+         <p id="s-1.2-2">The key words "MUST", "MUST NOT", "REQUIRED", "SHALL",
+         "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED",
+         "MAY", and "OPTIONAL" in this document are to be interpreted as
+         described in [<a class="xref" href="RFC2119">RFC2119</a>].
+         <a class="pilcrow" href="#s-1.2-2">¶</a></p>
+       </section>
+     </section>
+
+     <section id="nickname-profile">
+       <h2 id="s-2">
+         <a class="selfRef" href="#s-2">2.</a>
+         <a class="selfRef" href="#nickname-profile">Nickname Profile</a>
+       </h2>
+         <section id="n-sub-section-rules">
+           <h3 id="s-2.1">
+             <a class="selfRef" href="#s-2.1">2.1.</a>
+             <a class="selfRef"
+                href="#n-sub-section-Rules">Rules</a>
+                <span class="iref" id="i-Rules">
+            </h3>
+              <p id="s-2.1-1">The following rules apply within the Nickname
+              profile of the PRECIS FreeformClass.<a class="pilcrow"
+              href="#s-2.1-1">¶</a>
+
+              <dl class="dlCompact dlHanging">
+                <dd id="s-2.1-1.1">
+                  <ol start="1">
+                    <li id="s-2.1-1.1">Width Mapping Rule: There is no
+                    width-mapping rule (such a rule is not necessary because
+                    width mapping is performed as part of normalization using
+                    Normalization Form KC (NFKC) as specified below).<a
+                    class="pilcrow" href="#s-2.1-1.1">¶</a></li>
+                    <li id="s-2.1-1.2">Additional Mapping Rule: The additional
+                      mapping rule consists of the following sub-rules.<a
+                    class="pilcrow" href="#s-2.1-1.2">¶</a></li>
+                    <dd id="s-2.1-1.2.1">
+                      <ol start="1">
+                        <li id="s-2.1-1.2.1">Any instances of non-ASCII space MUST
+                        be mapped to ASCII space (U+0020); a non-ASCII space is
+                        any Unicode code point having a general category of
+                        "Zs", naturally with the exception of U+0020.<a
+                        class="pilcrow" href="#s-2.1-1.2.1">¶</a></li>
+
+                       <li id="s-2.1-1.2.2">Any instances of the ASCII space
+                       character at the beginning or end of a nickname MUST be
+                       removed (e.g., "stpeter " is mapped to "stpeter").<a
+                       class="pilcrow" href="#s-2.1-1.2.2">¶</a></li>
+
+                       <li id="s-2.1-1.2.3">Interior sequences of more than one
+                       ASCII space character MUST be mapped to a single ASCII
+                       space character (e.g., "St  Peter" is mapped to "St
+                       Peter").<a class="pilcrow" href="#s-2.1-2.2.3">¶</a></li>
+                      </ol>
+                    </dd>
+                    <li id="s-2.1-1.3">Case Mapping Rule: Unicode Default Case Folding
+                    MUST be applied, as defined in the Unicode Standard
+                    [Unicode] (at the time of this writing, the algorithm is
+                    specified in Chapter 3 of [Unicode7.0]).  In applications
+                    that prohibit conflicting nicknames, this rule helps to
+                    reduce the possibility of confusion by ensuring that
+                    nicknames differing only by case (e.g., "stpeter" vs.
+                    "StPeter") would not be presented to a human user at the
+                    same time.<a class="pilcrow" href="#s-2.1-1.3">¶</a></li>
+
+                    <li id="s-2.1-1.4">Normalization Rule: The string MUST be
+                    normalized using Unicode NFKC.  Because NFKC is more
+                    "aggressive" in finding matches than other normalization
+                    forms (in the terminology of Unicode, it performs both
+                    canonical and compatibility decomposition before recomposing
+                    code points), this rule helps to reduce the possibility of
+                    confusion by increasing the number of characters that would
+                    match (e.g., U+2163 ROMAN NUMERAL FOUR would match the
+                    combination of U+0049 LATIN CAPITAL LETTER I and U+0056
+                    LATIN CAPITAL LETTER V).<a class="pilcrow"
+                    href="#s-2.1-1.4">¶</a></li>
+
+                    <li id="s-2.1-1.5">Directionality Rule: There is no directionality
+                    rule.  The "Bidi Rule" (defined in [RFC5893]) and similar
+                    rules are unnecessary and inapplicable to nicknames, because
+                    it is perfectly acceptable for a given nickname to be
+                    presented differently in different layout systems (e.g., a
+                    user interface that is configured to handle primarily a
+                    right-to-left script versus an interface that is configured
+                    to handle primarily a left-to-right script), as long as the
+                    presentation is consistent in any given layout system.<a
+                    class="pilcrow" href="#s-2.1-1.6">¶</a></li>
+
+                  </ol>
+                </dd>
+              </dl>
+
+
+              <section id="n-sub-section-preparation">
+                <h3 id="s-2.2">
+                  <a class="selfRef" href="#s-2.2">2.2.</a>
+                  <a class="selfRef"
+                     href="#n-sub-section-Preparation">Preparation</a>
+                     <span class="iref" id="i-Preparation">
+                 </h3>
+                   <p id="s-2.2-1">An entity that prepares a string for
+                   subsequent enforcement according to this profile MUST ensure
+                   that the string consists only of Unicode code points that
+                   conform to the FreeformClass string class defined in [<a
+                   class="xref" href="#RFC7564">RFC7564</a>].  In addition,  the
+                   entity MUST ensure that the string is encoded as UTF-8 [<a
+                   class="xref" href="#RFC3629">RFC3629</a>].<a class="pilcrow"
+                   href="#s-2.2-1">¶</a></p>
+              </section>
+
+              <section id="n-sub-section-enforcement">
+                <h3 id="s-2.3">
+                  <a class="selfRef" href="#s-2.3">2.3.</a>
+                  <a class="selfRef"
+                     href="#n-sub-section-Enforcement">Enforcement</a>
+                     <span class="iref" id="i-Enforcement">
+                 </h3>
+                   <p id="s-2.3-1">An entity that performs enforcement according
+                   to this profile MUST prepare a string as described in Section
+                   2.2 and MUST also apply the following rules specified in
+                   Section 2.1 in the order shown:<a class="pilcrow"
+                   href="#s-2.3-1">¶</a></p>
+                   <dl class="dlCompact dlHanging">
+                     <dd id="s-2.3-1.1">
+                       <ol start="1">
+                         <li id="s-2.3-1.1">Additional Mapping Rule<a
+                         class="pilcrow" href="#s-2.3-1.1">¶</a></li>
+                         <li id="s-2.3-1.2">Normalization Rule<a
+                         class="pilcrow" href="#s-2.3-1.2">¶</a></li>
+                         <li id="s-2.3-1.3">Directionality Rule<a
+                         class="pilcrow" href="#s-2.3-1.3">¶</a></li>
+                       </ol>
+                     </dd>
+                   </dl>
+                   <p id="s-2.3-2">After all of the foregoing rules have been
+                   enforced, the entity MUST ensure that the nickname is not
+                   zero bytes in length (this is done after enforcing the rules
+                   to prevent applications from mistakenly omitting a nickname
+                   entirely, because when internationalized characters are
+                   accepted, a non-empty sequence of characters can result in a
+                   zero-length nickname after canonicalization).<a
+                   class="pilcrow" href="#s-2.3-2">¶</a></p>
+              </section>
+
+              <section id="n-sub-section-comparison">
+                <h3 id="s-2.4">
+                  <a class="selfRef" href="#s-2.4">2.4.</a>
+                  <a class="selfRef"
+                     href="#n-sub-section-Comparison">Comparison</a>
+                     <span class="iref" id="i-Comparison">
+                 </h3>
+                   <p id="s-2.4-1">   An entity that performs comparison of two
+                   strings according to this profile MUST prepare each string as
+                   specified in Section 2.2 and MUST apply the following rules
+                   specified in Section 2.1 in the order shown:<a
+                   class="pilcrow" href="#s-2.4-1">¶</a></p>
+                   <dl class="dlCompact dlHanging">
+                     <dd id="s-2.3-1.1">
+                       <ol start="1">
+                         <li id="s-2.4-1.1">Additional Mapping Rule<a
+                         class="pilcrow" href="#s-2.4-1.1">¶</a></li>
+                         <li id="s-2.4-1.2">Case Mapping Rule<a
+                         class="pilcrow" href="#s-2.4-1.2">¶</a></li>
+                         <li id="s-2.4-1.3">Normalization Rule<a
+                         class="pilcrow" href="#s-2.4-1.3">¶</a></li>
+                         <li id="s-2.4-1.4">Directionality Rule<a
+                         class="pilcrow" href="#s-2.4-1.4">¶</a></li>
+                       </ol>
+                     </dd>
+                   </dl>
+                   <p id="s-2.4-2">The two strings are to be considered
+                   equivalent if they are an exact octet-for-octet match
+                   (sometimes called "bit-string identity").<a class="pilcrow"
+                   href="#s-2.4-2">¶</a></p>
+                 </section>
+               </section>
+
+    <section id="examples">
+      <h2 id="s-3">
+        <a class="selfRef" href="#s-3">3.</a>
+        <a class="selfRef" href="#examples">Examples</a>
+      </h2>
+        <p id="s-3-1">The following examples illustrate a small number of
+        nicknames that are consistent with the format defined above, along with
+        the output string resulting from application of the PRECIS rules (note
+        that the characters < and > are used to delineate the actual nickname
+        and are not part of the nickname strings).<a class="pilcrow"
+        href="#s-3-1">¶</a></p>
+
+        <table id="table-1">
+          <caption>
+            <a class="selfRef" href="#t-1">Table 1.</a>
+            <a class="selfRef" href="#n-table-1">
+              A Sample of Legal Nicknames
+            </a>
+          </caption>
+          <span class="iref" id="i-legal-nicknames1"></span>
+          <thead>
+            <tr border="0">
+              <th align="left" border="0">#</th>
+              <th align="left" border="0">Nickname</th>
+              <th align="left" border="0">Output for Comparison</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr border="0">
+              <td align="left" border="0">
+                <p id="t-1-1">1</p>
+              </td>
+              <td align="left" border="0">&lt;Foo&gt;</td>
+              <td align="left" border="0">&lt;foo&gt;</td>
+            </tr>
+            <tr border="0">
+              <td align="left" border="0">
+                <p id="t-1-2">2</p>
+              </td>
+              <td align="left" border="0">&lt;foo&gt;</td>
+              <td align="left" border="0">&lt;foo&gt;</td>
+            </tr>
+            <tr border="0">
+              <td align="left" border="0">
+                <p id="t-1-3">3</p>
+              </td>
+              <td align="left" border="0">&lt;Foo Bar&gt;</td>
+              <td align="left" border="0">&lt;foo bar&gt;</td>
+            </tr>
+            <tr border="0">
+              <td align="left" border="0">
+                <p id="t-1-4">4</p>
+              </td>
+              <td align="left" border="0">&lt;foo bar&gt;</td>
+              <td align="left" border="0">&lt;foo bar&gt;</td>
+            </tr>
+            <tr border="0">
+              <td align="left" border="0">
+                <p id="t-1-5">5</p>
+              </td>
+              <td align="left" border="0">&lt;Σ&gt;</td>
+              <td align="left" border="0">GREEK SMALL LETTER SIGMA (U+03C3)</td>
+            </tr>
+            <tr border="0">
+              <td align="left" border="0">
+                <p id="t-1-6">6</p>
+              </td>
+              <td align="left" border="0">&lt;σ&gt;</td>
+              <td align="left" border="0">GREEK SMALL LETTER SIGMA (U+03C3)</td>
+            </tr>
+            <tr border="0">
+              <td align="left" border="0">
+                <p id="t-1-7">7</p>
+              </td>
+              <td align="left" border="0">&lt;ς&gt;</td>
+              <td align="left" border="0">GREEK SMALL LETTER SIGMA (U+03C3)</td>
+            </tr>
+            <tr border="0">
+              <td align="left" border="0">
+                <p id="t-1-8">8</p>
+              </td>
+              <td align="left" border="0">&lt;♚&gt;</td>
+              <td align="left" border="0">BLACK CHESS KING (U+265A)</td>
+            </tr>
+            <tr border="0">
+              <td align="left" border="0">
+                <p id="t-1-9">9</p>
+              </td>
+              <td align="left" border="0">&lt;Richard Ⅳ&gt;</td>
+              <td align="left" border="0">&lt;richard iv&gt;</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p id="s-3-2">TRegarding examples 5, 6, and 7: applying Unicode Default
+        Case Folding to GREEK CAPITAL LETTER SIGMA (U+03A3) results in GREEK
+        SMALL LETTER SIGMA (U+03C3), and the same is true of GREEK SMALL LETTER
+        FINAL SIGMA (U+03C2); therefore, the comparison operation defined in
+        Section 2.4 would result in matching of the nicknames in examples 5, 6,
+        and 7.  Regarding example 8: symbol characters such as BLACK CHESS KING
+        (U+265A) are allowed by the PRECIS FreeformClass and thus can be used in
+        nicknames.  Regarding example 9: applying Unicode Default Case Folding
+        to ROMAN NUMERAL FOUR (U+2163) results in SMALL ROMAN NUMERAL FOUR
+        (U+2173), and applying NFKC to SMALL ROMAN NUMERAL FOUR (U+2173) results
+        in LATIN SMALL LETTER I (U+0069) LATIN SMALL LETTER V (U+0086).<a
+        class="pilcrow" href="#s-3-2">¶</a></p>
+      </section>
+
+      <section id="examples">
+        <h2 id="s-4">
+          <a class="selfRef" href="#s-4">4.</a>
+          <a class="selfRef" href="#use">Use in Application Protocols</a>
+        </h2>
+          <p id="s-4-1">This specification defines only the PRECIS-based
+          rules for handling of nickname strings.  It is the responsibility of
+          an application protocol (e.g., MSRP, XCON, or XMPP) or application
+          definition to specify the protocol slots in which nickname strings can
+          appear, the entities that are expected to enforce the rules governing
+          nickname strings, and when in protocol processing or interface
+          handling the rules need to be enforced.  See Section 6 of [<a
+          class="xref" href="#RFC7564">RFC7564</a>] for guidelines about using
+          PRECIS profiles in applications.<a class="pilcrow"
+          href="#s-4-1">¶</a></p>
+
+          <p id="s-4-2">Above and beyond the PRECIS-based rules specified here,
+          application protocols can also define application-specific rules
+          governing nickname strings (rules regarding the minimum or maximum
+          length of nicknames, further restrictions on allowable characters or
+          character ranges, safeguards to mitigate the effects of visually
+          similar characters, etc.).<a class="pilcrow" href="#s-4-2">¶</a></p>
+
+          <p id="s-4-2">Naturally, application protocols can also specify rules
+          governing the actual use of nicknames in applications (reserved
+          nicknames, authorization requirements for using nicknames, whether
+          certain nicknames can be prohibited, handling of duplicates, the
+          relationship between nicknames and underlying identifiers such as SIP
+          URIs or Jabber IDs, etc.).<a class="pilcrow" href="#s-4-3">¶</a></p>
+
+          <p id="s-4-2">Entities that enforce the rules specified in this
+          document are encouraged to be liberal in what they accept by following
+          this procedure:<a class="pilcrow" href="#s-4-4">¶</a></p>
+
+          <dl class="dlCompact dlHanging">
+            <dd id="s-4-2.1">
+              <ol start="1">
+                <li id="s-4-2.1.1">Where possible, map characters (e.g, through width
+                mapping, additional mapping, case mapping, or normalization) and
+                accept the mapped string.<a class="pilcrow"
+                href="#s-4-2.1.1">¶</a></li>
+                <li id="s-4-2.1.2">If mapping is not possible (e.g., because a character
+                is disallowed in the FreeformClass), reject the string.<a class="pilcrow"
+                href="#s-4-2-1.2">¶</a></li>
+              </ol>
+            </dd>
+          </dl>
+        </section>
+
+    <section id="iana">
+      <h2 id="s-5">
+        <a class="selfRef" href="#s-5">5.</a>
+        <a class="selfRef" href="#iana">IANA Considerations</a>
+      </h2>
+        <p id="s-5-1">The IANA shall add the following entry to the PRECIS Profiles
+        Registry:<a class="pilcrow" href="#s-5-1">¶</a></p>
+        <p id="s-5-1">Name: Nickname<a class="pilcrow" href="#s-5-1">¶</a></p>
+        <p id="s-5-2">Base Class:FreeformClass<a class="pilcrow" href="#s-5-2">¶</a></p>
+        <p id="s-5-3">Applicability:  Nicknames in messaging and text
+        conferencing technologies; petnames for devices, accounts, and
+        people; and other uses of nicknames or petnames.<a class="pilcrow"
+        href="#s-5-3">¶</a></p>
+        <p id="s-5-4">Replaces: None<a class="pilcrow" href="#s-5-4">¶</a></p>
+        <p id="s-5-5">Width Mapping Rule:  None (handled via NFKC)<a class="pilcrow" href="#s-5-5">¶</a></p>
+        <p id="s-5-6">Additional Mapping Rule:  Map non-ASCII space characters
+        to ASCII space, strip leading and trailing space characters, map
+        interior sequences of multiple space characters to a single ASCII
+        space.<a class="pilcrow" href="#s-5-6">¶</a></p>
+        <p id="s-5-7">Case Mapping Rule:  Map uppercase and titlecase
+        characters to lowercase using Unicode Default Case Folding.<a
+        class="pilcrow" href="#s-5-7">¶</a></p>
+        <p id="s-5-8">Normalization Rule: NFKC<a class="pilcrow" href="#s-5-8">¶</a></p>
+        <p id="s-5-9">Directionality Rule: None<a class="pilcrow" href="#s-5-9">¶</a></p>
+        <p id="s-5-10">Enforcement: To be specified by applications.<a class="pilcrow" href="#s-5-10">¶</a></p>
+        <p id="s-5-11">Specification:  RFC 7700 (this document)<a class="pilcrow" href="#s-5-11">¶</a></p>
+    </section>
+
+    <section id="security">
+      <h2 id="s-6">
+        <a class="selfRef" href="#s-6">6.</a>
+        <a class="selfRef" href="#security">Security Considerations</a>
+      </h2>
+      <section id="n-sub-section-reuse-precis">
+        <h3 id="s-6.1">
+          <a class="selfRef" href="#s-6.1">6.1</a>
+          <a class="selfRef"
+             href="#n-sub-section-reuse-precis">Reuse of PRECIS</a>
+             <span class="iref" id="i-reuse">
+         </h3>
+         <p id="s-6-1.1">The security considerations described in [<a
+         class="xref" href="#RFC7564">RFC7546</a>] apply to the FreeformClass
+         string class used in this document for nicknames.<a class="pilcrow"
+         href="#s-6-1.1">¶</a></p>
+       </section>
+       <section id="n-sub-section-reuse-unicode">
+         <h3 id="s-6.2">
+           <a class="selfRef" href="#s-6.2">6.2</a>
+           <a class="selfRef"
+              href="#n-sub-section-reuse-unicode">Reuse of Unicode</a>
+              <span class="iref" id="i-reuse">
+          </h3>
+          <p id="s-6-2.1">The security considerations described in [<a
+          class="xref" href="UTS39">UTS39</a>] apply to the use of Unicode
+          characters in nicknames.<a class="pilcrow" href="#s-6-2.1">¶</a></p>
+        </section>
+        <section id="n-sub-section-visually-similar">
+          <h3 id="s-6.3">
+            <a class="selfRef" href="#s-6.3">6.3</a>
+            <a class="selfRef"
+               href="#n-sub-section-reuse-unicode">Visually Similar Characters</a>
+               <span class="iref" id="i-visually-similar">
+           </h3>
+           <p id="s-6-3.1">[<a class="xref" href="#RFC7564">RFC7564</a>]
+           describes some of the security considerations related to visually
+           similar characters, also called "confusable characters" or
+           "confusables".<a class="pilcrow" href="#s-6-3.1">¶</a></p>
+           <p id="s-6-3.2">Although the mapping rules defined in Section 2 of
+           this document are designed, in part, to reduce the possibility of
+           confusion about nicknames, this document does not provide
+           more-detailed recommendations regarding the handling of visually
+           similar characters, such as those provided in [<a class="xref"
+           href="UTS39">UTS39</a>].<a class="pilcrow" href="#s-6-3.2">¶</a></p>
+           </section>
+
+         </section>
+            <section id="n-references">
+              <h2 id="s-7">
+                <a class="selfRef" href="#s-7">7.</a>
+                <a class="selfRef" href="#n-references">References</a>
+              </h2>
+              <section id="norm">
+                <h3 id="s-7.1">
+                  <a class="selfRef" href="#s-7.1">7.1.</a>
+                  <a class="selfRef" href="#norm">Normative References</a>
+                </h3>
+                <dl class="reference">
+                  <dt id="RFC2119">[RFC2119]</dt>
+                  <dd>
+                    <span class="refAuthor">Bradner, S.</span>,
+                    "<span class="refTitle">Key words for use in RFCs to Indicate
+                  Requirement Levels</span>",
+                    <span class="refSeries">
+                      <span class="refSeriesName">BCP</span>
+                      <span class="refSeriesValue">14</span>
+                    </span>,
+                    <span class="refSeries">
+                      <span class="refSeriesName">RFC</span>
+                      <span class="refSeriesValue">2119</span>
+                    </span>,
+                    <span class="refSeries">
+                      <span class="refSeriesName">DOI</span>
+                      <span class="refSeriesValue">10.17487/RFC2119</span>
+                    </span>,
+                    <time class="refDate" datetime="1997-03">March 1997</time>,
+                    &lt;<a class="refTarget"
+                  href="https://www.rfc-editor.org/info/rfc2119">https://www.rfc-editor.org/info/rfc2119</a>&gt;.
+                </dd>
+
+                <dt id="RFC3629">[RFC3629]</dt>
+                <dd>
+                  <span class="refAuthor">Yergeau, F.</span>,
+                  "<span class="refTitle">UTF-8, a transformation format of ISO
+              10646</span>",
+                  <span class="refSeries">
+                    <span class="refSeriesName">STD</span>
+                    <span class="refSeriesValue">63</span>
+                  </span>,
+                  <span class="refSeries">
+                    <span class="refSeriesName">RFC</span>
+                    <span class="refSeriesValue">3629</span>
+                  </span>,
+                  <span class="refSeries">
+                    <span class="refSeriesName">DOI</span>
+                    <span class="refSeriesValue">10.17487/RFC3629</span>
+                  </span>,
+                  <time class="refDate" datetime="2003-11">November 2003</time>,
+                  &lt;<a class="refTarget" href="https://www.rfc-editor.org/info/rfc3629">
+                  https://www.rfc-editor.org/info/rfc3629</a>&gt;.
+              </dd>
+
+              <dt id="RFC5893">[RFC5893]</dt>
+              <dd>
+                <span class="refAuthor">Alvestrand, H.</span>, Ed. and
+                <span class="refAuthor">C. Karp</span>,
+                "<span class="refTitle">Right-to-Left Scripts
+              for Internationalized Domain Names for Applications
+              (IDNA)</span>",
+                <span class="refSeries">
+                  <span class="refSeriesName">RFC</span>
+                  <span class="refSeriesValue">5893</span>
+                </span>,
+                <span class="refSeries">
+                  <span class="refSeriesName">DOI</span>
+                  <span class="refSeriesValue">10.17487/RFC5893</span>
+                </span>,
+                <time class="refDate" datetime="2010-08">August 2010</time>,
+                &lt;<a class="refTarget" href="https://www.rfc-editor.org/info/rfc5893">
+                https://www.rfc-editor.org/info/rfc5893</a>&gt;.
+            </dd>
+
+            <dt id="RFC6365">[RFC6365]</dt>
+            <dd>
+              <span class="refAuthor">Hoffman, P.</span> and
+              <span class="refAuthor">J. Klensin</span>,
+              "<span class="refTitle">Terminology Used in
+              Internationalization in the IETF</span>",
+              <span class="refSeries">
+                <span class="refSeriesName">BCP</span>
+                <span class="refSeriesValue">166</span>
+              </span>,
+              <span class="refSeries">
+                <span class="refSeriesName">RFC</span>
+                <span class="refSeriesValue">6365</span>
+              </span>,
+              <span class="refSeries">
+                <span class="refSeriesName">DOI</span>
+                <span class="refSeriesValue">10.17487/RFC6365</span>
+              </span>,
+              <time class="refDate" datetime="2011-10">September 2011</time>,
+              &lt;<a class="refTarget"
+            href="https://www.rfc-editor.org/info/rfc6365">https://www.rfc-editor.org/info/rfc6365</a>&gt;.
+          </dd>
+
+          <dt id="RFC7564">[RFC7564]</dt>
+          <dd>
+            <span class="refAuthor">Saint-Andre, P.</span> and
+            <span class="refAuthor">M. Blanchet</span>,
+            "<span class="refTitle">PRECIS Framework:
+              Preparation, Enforcement, and Comparison of
+              Internationalized Strings in Application Protocols</span>",
+            <span class="refSeries">
+              <span class="refSeriesName">RFC</span>
+              <span class="refSeriesValue">7564</span>
+            </span>,
+            <span class="refSeries">
+              <span class="refSeriesName">DOI</span>
+              <span class="refSeriesValue">10.17487/RFC7564</span>
+            </span>,
+            <time class="refDate" datetime="2011-10">May 2015</time>,
+            &lt;<a class="refTarget"
+          href="https://www.rfc-editor.org/info/rfc7564">https://www.rfc-editor.org/info/rfc7564</a>&gt;.
+        </dd>
+
+        <dt id="Unicode">[Unicode]</dt>
+        <dd>
+          <div class="org">
+            <span class="org">The Unicode Consortium</span>,
+          </div>
+          "<span class="refTitle">The Unicode Standard</span>",
+          &lt;<a class="refTarget"
+        href="http://www.unicode.org/versions/latest/">http://www.unicode.org/versions/latest/</a>&gt;.
+      </dd>
+
+      <dt id="Unicode">[Unicode7.0]</dt>
+      <dd>
+        <div class="org">
+          <span class="org">The Unicode Consortium</span>,
+        </div>
+        "<span class="refTitle">The Unicode Standard, Version 7.0.0</span>",
+        <time class="refDate" datetime="2014">2014</time>,
+        &lt;<a class="refTarget"
+      href="http://www.unicode.org/versions/Unicode7.0.0/">http://www.unicode.org/versions/Unicode7.0.0/</a>&gt;.
+    </dd>
+
+    <dt id="Unicode">[UTS39]</dt>
+    <dd>
+      <div class="org">
+        <span class="org">The Unicode Consortium</span>,
+      </div>
+      "<span class="refTitle">Unicode Technical Standard #39:
+              Unicode Security Mechanisms</span>",
+      <time class="refDate" datetime="2013-11">November 2013</time>,
+      &lt;<a class="refTarget"
+    href="http://unicode.org/reports/tr39/">http://unicode.org/reports/tr39/</a>&gt;.
+  </dd>
+
+  </dl>
+</section>
+
+<section id="informative">
+  <h3 id="s-7.2">
+    <a class="selfRef" href="#s-7.2">7.2.</a>
+    <a class="selfRef" href="#informative">Informative References</a>
+  </h3>
+  <dl class="reference">
+    <dt id="PETNAME-SYSTEMS">[PETNAME-SYSTEMS]</dt>
+    <dd>
+      <span class="refAuthor">Stiegler, M.</span>,
+      "<span class="refTitle">An Introduction to Petname Systems</span>",
+      <time class="refDate" datetime="2012-06">updated June 2012, February 2005,</time>,
+      &lt;<a class="refTarget"
+    href="http://www.skyhunter.com/marcs/petnames/IntroPetNames.html">
+    http://www.skyhunter.com/marcs/petnames/IntroPetNames.html</a>&gt;.
+  </dd>
+
+  <dl class="reference">
+    <dt id="RFC20">[RFC20]</dt>
+    <dd>
+      <span class="refAuthor">Cerf, V.</span>,
+      "<span class="refTitle">ASCII format for network interchange</span>",
+      <span class="refSeries">
+        <span class="refSeriesName">STD</span>
+        <span class="refSeriesValue">80</span>
+      </span>,
+      <span class="refSeries">
+        <span class="refSeriesName">RFC</span>
+        <span class="refSeriesValue">20</span>
+      </span>,
+      <span class="refSeries">
+        <span class="refSeriesName">DOI</span>
+        <span class="refSeriesValue">10.17487/RFC20</span>
+      </span>,
+      <time class="refDate" datetime="1969-10">October 1969</time>,
+      &lt;<a class="refTarget"
+    href="https://www.rfc-editor.org/info/rfc20">https://www.rfc-editor.org/info/rfc20</a>&gt;.
+  </dd>
+
+  <dl class="reference">
+    <dt id="RFC2811">[RFC2811]</dt>
+    <dd>
+      <span class="refAuthor">Kalt, C.</span>,
+      "<span class="refTitle">Internet Relay Chat: Channel Management</span>",
+      <span class="refSeries">
+        <span class="refSeriesName">RFC</span>
+        <span class="refSeriesValue">2811</span>
+      </span>,
+      <span class="refSeries">
+        <span class="refSeriesName">DOI</span>
+        <span class="refSeriesValue">10.17487/RFC2811</span>
+      </span>,
+      <time class="refDate" datetime="2000-04">April 2000</time>,
+      &lt;<a class="refTarget"
+    href="https://www.rfc-editor.org/info/rfc2811">https://www.rfc-editor.org/info/rfc2811</a>&gt;.
+  </dd>
+
+  <dl class="reference">
+    <dt id="RFC4975">[RFC4975]</dt>
+    <dd>
+      <span class="refAuthor">Campbell, B.</span>, Ed.,
+      <span class="refAuthor">Mahy, R.</span>, Ed.,
+      <span class="refAuthor">C. Jennings</span>, Ed.,
+      "<span class="refTitle">The Message Session Relay Protocol (MSRP)</span>",
+      <span class="refSeries">
+        <span class="refSeriesName">RFC</span>
+        <span class="refSeriesValue">4975</span>
+      </span>,
+      <span class="refSeries">
+        <span class="refSeriesName">DOI</span>
+        <span class="refSeriesValue">10.17487/RFC4975</span>
+      </span>,
+      <time class="refDate" datetime="2007-09">September 2007</time>,
+      &lt;<a class="refTarget"
+    href="https://www.rfc-editor.org/info/rfc4975">https://www.rfc-editor.org/info/rfc4975</a>&gt;.
+  </dd>
+
+  <dl class="reference">
+    <dt id="RFC5239">[RFC5239]</dt>
+    <dd>
+      <span class="refAuthor">Barnes, M.</span>,
+      <span class="refAuthor">Boulton, C.</span>, and
+      <span class="refAuthor">O. Levin</span>,
+      "<span class="refTitle">A Framework for Centralized Conferencing</span>",
+      <span class="refSeries">
+        <span class="refSeriesName">RFC</span>
+        <span class="refSeriesValue">5239</span>
+      </span>,
+      <span class="refSeries">
+        <span class="refSeriesName">DOI</span>
+        <span class="refSeriesValue">10.17487/RFC5239</span>
+      </span>,
+      <time class="refDate" datetime="2008-06">June 2008</time>,
+      &lt;<a class="refTarget"
+    href="https://www.rfc-editor.org/info/rfc5239">https://www.rfc-editor.org/info/rfc5239</a>&gt;.
+  </dd>
+
+  <dl class="reference">
+    <dt id="RFC5322">[RFC5322]</dt>
+    <dd>
+      <span class="refAuthor">Resnick, P.</span>, Ed.,
+      "<span class="refTitle">Internet Message Format</span>",
+      <span class="refSeries">
+        <span class="refSeriesName">RFC</span>
+        <span class="refSeriesValue">5322</span>
+      </span>,
+      <span class="refSeries">
+        <span class="refSeriesName">DOI</span>
+        <span class="refSeriesValue">10.17487/RFC5322</span>
+      </span>,
+      <time class="refDate" datetime="2008-10">October 2008</time>,
+      &lt;<a class="refTarget"
+    href="https://www.rfc-editor.org/info/rfc5322">https://www.rfc-editor.org/info/rfc5322</a>&gt;.
+  </dd>
+
+  <dl class="reference">
+    <dt id="RFC6120">[RFC6120]</dt>
+    <dd>
+      <span class="refAuthor">Saint-Andre, P.</span>,
+      "<span class="refTitle">Extensible Messaging and Presence Protocol (XMPP): Core</span>",
+      <span class="refSeries">
+        <span class="refSeriesName">RFC</span>
+        <span class="refSeriesValue">6120</span>
+      </span>,
+      <span class="refSeries">
+        <span class="refSeriesName">DOI</span>
+        <span class="refSeriesValue">10.17487/RFC6120</span>
+      </span>,
+      <time class="refDate" datetime="2011-03">March 2011</time>,
+      &lt;<a class="refTarget"
+    href="https://www.rfc-editor.org/info/rfc6120">https://www.rfc-editor.org/info/rfc6120</a>&gt;.
+  </dd>
+
+  <dl class="reference">
+    <dt id="RFC7701">[RFC7701]</dt>
+    <dd>
+      <span class="refAuthor">Niemi, A.</span>,
+      <span class="refAuthor">Garcia-Martin, M.</span>, and
+      <span class="refAuthor">G. Sandbakken</span>,
+      "<span class="refTitle">Multi-party Chat Using the Message Session Relay
+        Protocol (MSRP)</span>",
+      <span class="refSeries">
+        <span class="refSeriesName">RFC</span>
+        <span class="refSeriesValue">7701</span>
+      </span>,
+      <span class="refSeries">
+        <span class="refSeriesName">DOI</span>
+        <span class="refSeriesValue">10.17487/RFC7701</span>
+      </span>,
+      <time class="refDate" datetime="2015-12">December 2015</time>,
+      &lt;<a class="refTarget"
+    href="https://www.rfc-editor.org/info/rfc7701">https://www.rfc-editor.org/info/rfc7701</a>&gt;.
+  </dd>
+
+  <dt id="XCON-SYSTEM">[XCON-SYSTEM]</dt>
+  <dd>
+    <span class="refAuthor">Barnes, M.</span>,
+    <span class="refAuthor">Boulton, C.</span>, and
+    <span class="refAuthor">S. Loreto</span>,
+    "<span class="refTitle">Chatrooms within a Centralized Conferencing (XCON) System</span>",
+    <span class="refSeries">
+      <span class="refSeriesName">Work in Progress</span>
+      <span class="refSeriesValue">draft-boulton-xcon-session-chat-08</span>
+    </span>,
+    <time class="refDate" datetime="2012-07">July 2012</time>.
+</dd>
+
+<dt id="XEP-0045">[XEP-0045]</dt>
+<dd>
+  <span class="refAuthor">Saint-Andre, P.</span>,
+  "<span class="refTitle">Multi-User Chat</span>",
+  <span class="refSeries">
+    <span class="refSeriesName">XSF XEP</span>
+    <span class="refSeriesValue">0045</span>
+  </span>,
+  <time class="refDate" datetime="2012-02">February 2012</time>,
+  &lt;<a class="refTarget"
+href="http://xmpp.org/extensions/xep-0045.html">http://xmpp.org/extensions/xep-0045.html</a>&gt;.
+</dd>
+
+<dt id="XEP-0172">[XEP-0172]</dt>
+<dd>
+  <span class="refAuthor">Saint-Andre, P.</span>,
+  <span class="refAuthor">Mercier, V.</span>,
+  "<span class="refTitle">User Nickname</span>",
+  <span class="refSeries">
+    <span class="refSeriesName">XSF XEP</span>
+    <span class="refSeriesValue">0172</span>
+  </span>,
+  <time class="refDate" datetime="2012-03">March 2012</time>,
+  &lt;<a class="refTarget"
+href="http://xmpp.org/extensions/xep-0172.html">http://xmpp.org/extensions/xep-0172.html</a>&gt;.
+</dd>
+</section>
+
+<section id="acknowledgements">
+      <h2 id="s-acknowledgements">
+        <a class="selfRef" href="#s-acknowledgements">Acknowledgements</a>
+      </h2>
+      <p id="s-acknowledgements-1">Thanks to Kim Alvefur, Mary Barnes, Ben
+      Campbell, Dave Cridland, Miguel Garcia, Salvatore Loreto, Enrico Marocco,
+      Matt Miller, and Yoshiro YONEYA for their reviews and comments.<a
+      class="pilcrow" href="#s-acknowledgements-1">¶</a></p>
+
+      <p id="s-acknowledgements-2">Paul Kyzivat and Melinda Shore reviewed the
+      document for the General Area Review Team and Operations Directorate,
+      respectively.<a class="pilcrow" href="#s-acknowledgements-2">¶</a></p>
+
+      <p id="s-acknowledgements-3">During IESG review, Ben Campbell and Kathleen
+      Moriarty provided comments that led to further improvements.<a
+      class="pilcrow" href="#s-acknowledgements-3">¶</a></p>
+
+      <p id="s-acknowledgements-4">Thanks to Matt Miller as Document Shepherd,
+      Pete Resnick and Andrew Sullivan as IANA Designated Experts, Marc Blanchet
+      and Alexey Melnikov as working group Chairs, and Barry Leiba as Area
+      Director.<a class="pilcrow" href="#s-acknowledgements-4">¶</a></p>
+
+      <p id="s-acknowledgements-5">The author wishes to acknowledge Cisco Systems,
+      Inc., for employing him during his work on earlier draft versions of this
+      document.<a class="pilcrow" href="#s-acknowledgements-5">¶</a></p>
+
+    </section>
+
+<section id="author-addresses">
+   <h2>
+     <a class="selfRef" href="#author-addresses">
+       Authors' Addresses
+     </a>
+   </h2>
+<hr class="addr">
+<address class="vcard">
+  <div class="nameRole"><span class="fn">Peter Saint-Andre</span></div>
+  <div class="org">&yet</div>
+  <div>
+    <span>Email:</span>
+    <a class="email" href="mailto:peter@andyet.com">
+      peter@andyet.com
+    </a>
+    <div><span>URI:</span> &lt;<a class="authorURI" href="https://andyet.com/">https://andyet.com/</a>&gt;</div>
+  </div>
+</address>
+</section>
+
+<div class="docInfo">
+  <span class="prepared">Prepared: <time datetime="2016-12-14T01:53:34.153Z">2016-12-14</time></span>
+  <span class="rendered">Rendered: <time datetime="2016-12-14T01:53:37Z">2016-12-14</time></span>
+</div>
+</body>
+</html>
