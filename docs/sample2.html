@@ -7,7 +7,7 @@
     <meta content="internationalization, i18n" name="keywords">
     <meta content="This document describes methods for handling Unicode strings
    representing memorable, human-friendly names (called 'nicknames',
-   "display names", or "petnames") for people, devices, accounts,
+   'display names', or 'petnames') for people, devices, accounts,
    websites, and other entities."
           name="description">
     <title>
@@ -54,7 +54,7 @@
       <dd class="authors">
         <div class="author">
           <div class="author-name">P. Saint-Andre</span></div>
-          <div class="org">&yet</span></div>
+          <div class="org">&amp;yet</span></div>
         </div>
       </dd>
     </dl>
@@ -174,38 +174,40 @@
           <a class="selfRef" href="#s-1.1">1.1.</a>
           <a class="selfRef"
              href="#n-sub-section-overview">Overview</a>
-             <span class="iref" id="i-Overview">
         </h3>
-        <p id="s-1.1-1"> A
-        number of technologies and applications provide the ability for a person
-        to choose a memorable, human-friendly name in a communications context,
-        or to set such a name for another entity such as a device, account,
-        contact, or website.  Such names are variously called "nicknames" (e.g.,
-        in chat room applications), "display names" (e.g., in Internet mail), or
-        "petnames" (see [PETNAME-SYSTEMS]); for consistency, these are all
-        called "nicknames" in this document. <a class="pilcrow"
-        href="#s-1.1-1">¶</a>
-        </p>
+        <p id="s-1.1-1"> A number of technologies and applications provide the
+        ability for a person to choose a memorable, human-friendly name in a
+        communications context, or to set such a name for another entity such as
+        a device, account, contact, or website.  Such names are variously called
+        "nicknames" (e.g., in chat room applications), "display names" (e.g., in
+        Internet mail), or "petnames" (see [<a class="xref"
+        href="PETNAME-SYSTEMS">PETNAME-SYSTEMS</a>]); for consistency, these are
+        all called "nicknames" in this document. <a class="pilcrow"
+        href="#s-1.1-1">¶</a> </p>
 
-        <p id="s-1.1-2">
-        Nicknames are commonly supported in technologies for textual chat rooms,
-        e.g., Internet Relay Chat [RFC2811] and multi-party chat technologies
-        based on the Extensible Messaging and Presence Protocol (XMPP) [RFC6120]
-        [XEP-0045], the Message Session Relay Protocol (MSRP) [RFC4975]
-        [RFC7701], and Centralized Conferencing (XCON) [RFC5239] [XCON-SYSTEM].
-        Recent chat room technologies also allow internationalized nicknames
-        because they support characters from outside the ASCII range [RFC20],
-        typically by means of the Unicode character set [Unicode].  Although
-        such nicknames tend to be used primarily for display purposes, they are
-        sometimes used for programmatic purposes as well (e.g., kicking users or
-        avoiding nickname conflicts).<a class="pilcrow" href="#s-1.1-2">¶</a>
-        </p>
+        <p id="s-1.1-2"> Nicknames are commonly supported in technologies for
+        textual chat rooms, e.g., Internet Relay Chat [<a class="xref"
+        href="RFC2811">RFC2811</a>] and multi-party chat technologies based on
+        the Extensible Messaging and Presence Protocol (XMPP) [RFC6120] [<a
+        class="xref" href="XEP-0045">XEP-0045</a>], the Message Session Relay
+        Protocol (MSRP) [<a class="xref" href="RFC4975">RFC4975</a>] [<a
+        class="xref" href="RFC7701">RFC7701</a>], and Centralized Conferencing
+        (XCON) [<a class="xref" href="RFC5239">RFC5239</a>] [<a class="xref"
+        href="XCON-SYSTEM">XCON-SYSTEM</a>]. Recent chat room technologies also
+        allow internationalized nicknames because they support characters from
+        outside the ASCII range [<a class="xref" href="RFC20">RFC20</a>],
+        typically by means of the Unicode character set [<a class="xref"
+        href="Unicode">Unicode</a>].  Although such nicknames tend to be used
+        primarily for display purposes, they are sometimes used for programmatic
+        purposes as well (e.g., kicking users or avoiding nickname conflicts).<a
+        class="pilcrow" href="#s-1.1-2">¶</a> </p>
 
-        <p id="s-1.1-3"> A
-        similar usage enables a person to set their own preferred display name
-        or to set a preferred display name for another user (e.g., the
-        "display-name" construct in the Internet message format [RFC5322] and
-        [XEP-0172] in XMPP).<a class="pilcrow" href="#s-1.1-3">¶</a> </p>
+        <p id="s-1.1-3"> A similar usage enables a person to set their own
+        preferred display name or to set a preferred display name for another
+        user (e.g., the "display-name" construct in the Internet message format
+        [<a class="xref" href="RFC5322">RFC5322</a>] and [<a class="xref"
+        href="XEP-0172">XEP-0172</a>] in XMPP).<a class="pilcrow"
+        href="#s-1.1-3">¶</a> </p>
 
         <p id="s-1.1-4">
         Memorable, human-friendly names are also used in contexts other than
@@ -213,17 +215,17 @@
         visualization application), websites (e.g., for bookmarks in a web
         browser), accounts (e.g., in a web interface for a list of payees in a
         bank account), people (e.g., in a contact list application), and the
-        like.<a class="pilcrow" href="#s-1.4-1">¶</a> </p>
+        like.<a class="pilcrow" href="#s-1.1-4">¶</a> </p>
 
         <p id="s-1.1-5">
         The rules specified in this document can be applied in all of the
-        foregoing contexts. </p>
+        foregoing contexts. <a class="pilcrow" href="#s-1.1-5">¶</a></p>
 
-         To
+        <p id="s-1.1-6"> To
         increase the likelihood that memorable, human-friendly names will work
         in ways that make sense for typical users throughout the world, this
         document defines rules for preparing, enforcing, and comparing
-        internationalized nicknames.<a class="pilcrow" href="#s-1.5-1">¶</a>
+        internationalized nicknames.<a class="pilcrow" href="#s-1.1-6">¶</a>
         </p>
       </section>
 
@@ -232,7 +234,6 @@
           <a class="selfRef" href="#s-1.2">1.2.</a>
           <a class="selfRef"
              href="#n-sub-section-terminology">Terminology</a>
-             <span class="iref" id="i-Terminology">
         </h3>
          <p id="s-1.2-1">Many important terms used in this document are defined
          in [<a class="xref" href="#RFC7564">RFC7564</a>], [<a class="xref"
@@ -258,7 +259,6 @@
              <a class="selfRef" href="#s-2.1">2.1.</a>
              <a class="selfRef"
                 href="#n-sub-section-Rules">Rules</a>
-                <span class="iref" id="i-Rules">
             </h3>
               <p id="s-2.1-1">The following rules apply within the Nickname
               profile of the PRECIS FreeformClass.<a class="pilcrow"
@@ -337,7 +337,6 @@
                   <a class="selfRef" href="#s-2.2">2.2.</a>
                   <a class="selfRef"
                      href="#n-sub-section-Preparation">Preparation</a>
-                     <span class="iref" id="i-Preparation">
                  </h3>
                    <p id="s-2.2-1">An entity that prepares a string for
                    subsequent enforcement according to this profile MUST ensure
@@ -354,7 +353,6 @@
                   <a class="selfRef" href="#s-2.3">2.3.</a>
                   <a class="selfRef"
                      href="#n-sub-section-Enforcement">Enforcement</a>
-                     <span class="iref" id="i-Enforcement">
                  </h3>
                    <p id="s-2.3-1">An entity that performs enforcement according
                    to this profile MUST prepare a string as described in Section
@@ -388,7 +386,6 @@
                   <a class="selfRef" href="#s-2.4">2.4.</a>
                   <a class="selfRef"
                      href="#n-sub-section-Comparison">Comparison</a>
-                     <span class="iref" id="i-Comparison">
                  </h3>
                    <p id="s-2.4-1">   An entity that performs comparison of two
                    strings according to this profile MUST prepare each string as
@@ -424,7 +421,7 @@
         <p id="s-3-1">The following examples illustrate a small number of
         nicknames that are consistent with the format defined above, along with
         the output string resulting from application of the PRECIS rules (note
-        that the characters < and > are used to delineate the actual nickname
+        that the characters &lt; and &gt; are used to delineate the actual nickname
         and are not part of the nickname strings).<a class="pilcrow"
         href="#s-3-1">¶</a></p>
 
@@ -435,7 +432,6 @@
               A Sample of Legal Nicknames
             </a>
           </caption>
-          <span class="iref" id="i-legal-nicknames1"></span>
           <thead>
             <tr border="0">
               <th align="left" border="0">#</th>
@@ -611,7 +607,6 @@
           <a class="selfRef" href="#s-6.1">6.1</a>
           <a class="selfRef"
              href="#n-sub-section-reuse-precis">Reuse of PRECIS</a>
-             <span class="iref" id="i-reuse">
          </h3>
          <p id="s-6-1.1">The security considerations described in [<a
          class="xref" href="#RFC7564">RFC7546</a>] apply to the FreeformClass
@@ -623,7 +618,6 @@
            <a class="selfRef" href="#s-6.2">6.2</a>
            <a class="selfRef"
               href="#n-sub-section-reuse-unicode">Reuse of Unicode</a>
-              <span class="iref" id="i-reuse">
           </h3>
           <p id="s-6-2.1">The security considerations described in [<a
           class="xref" href="UTS39">UTS39</a>] apply to the use of Unicode
@@ -634,7 +628,6 @@
             <a class="selfRef" href="#s-6.3">6.3</a>
             <a class="selfRef"
                href="#n-sub-section-reuse-unicode">Visually Similar Characters</a>
-               <span class="iref" id="i-visually-similar">
            </h3>
            <p id="s-6-3.1">[<a class="xref" href="#RFC7564">RFC7564</a>]
            describes some of the security considerations related to visually
@@ -1034,7 +1027,7 @@ href="http://xmpp.org/extensions/xep-0172.html">http://xmpp.org/extensions/xep-0
 <hr class="addr">
 <address class="vcard">
   <div class="nameRole"><span class="fn">Peter Saint-Andre</span></div>
-  <div class="org">&yet</div>
+  <div class="org">&amp;yet</div>
   <div>
     <span>Email:</span>
     <a class="email" href="mailto:peter@andyet.com">
