@@ -1,19 +1,22 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="US-ASCII"?>
   <?xml-stylesheet type="text/xsl" href="rfc2629.xslt" ?>
 
 <!DOCTYPE rfc SYSTEM "rfc2629.dtd" [
 <!ENTITY RFC5741 SYSTEM "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.5741.xml">
 <!ENTITY RFC7322 SYSTEM "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.7322.xml">
-<!ENTITY I-D.iab-html-rfc SYSTEM "http://xml2rfc.ietf.org/public/rfc/bibxml3/reference.I-D.iab-html-rfc.xml">
-<!ENTITY I-D.iab-rfc-framework SYSTEM "http://xml2rfc.ietf.org/public/rfc/bibxml3/reference.I-D.iab-rfc-framework.xml">
 ]>
 
-<rfc ipr="trust200902" docName="draft-iab-rfc-css-01" category="info">
+<rfc submissionType="IAB" consensus="yes" ipr="trust200902" number="7993" category="info">
 
 <?rfc toc="yes"?>
+<?rfc tocdepth="4"?>
+<?rfc sortrefs="yes"?>
+<?rfc symrefs="yes"?>
+<?rfc compact="yes"?>
+<?rfc subcompact="no"?>
 
   <front>
-    <title abbrev="I-D">CSS Requirements for RFCs</title>
+    <title abbrev="CSS Reqs for RFCs">Cascading Style Sheets (CSS) Requirements for RFCs</title>
 
     <author initials="H." surname="Flanagan" fullname="Heather Flanagan">
       <organization>RFC Editor</organization>
@@ -23,21 +26,21 @@
       </address>
     </author>
 
-    <date year="2016" month="July" day="4"/>
+    <date year="2016" month="December"/>
     
     <area>General</area>
 
     <workgroup>Internet Architecture Board</workgroup>
 
+<keyword>Format</keyword>
+
     <abstract>
-
-
-<t>The HTML format for RFCs, described in <xref target="I-D.iab-html-rfc"/> assigns style guidance to an RFC Editor-defined Cascading Style Sheet (CSS).  The embedded, default CSS as included by the RFC Editor is expected to take into account accessibility needs and be built along a responsive design model.  This document describes the requirements for the default CSS used by the RFC Editor. The class names are based on the classes defined in draft-iab-html-rfc. </t> 
-
-<t>Discussion of this draft takes place on the rfc-interest mailing list (rfc-interest@rfc-editor.org), which has its home page at https://www.rfc-editor.org/mailman/listinfo/rfc-interest.</t>
-
-
-
+<t>The HTML format for RFCs assigns style guidance to a Cascading Style Sheet
+(CSS) specifically defined for the RFC Series.  The embedded, default CSS as
+included by the RFC Editor is expected to take into account accessibility
+needs and to be built along a responsive design model.  This document
+describes the requirements for the default CSS used by the RFC Editor. The
+class names are based on the classes defined in "HTML for RFCs" (RFC 7992). </t>  
     </abstract>
 
 
@@ -48,11 +51,28 @@
 
 <section anchor="introduction" title="Introduction">
 
-<t>The HTML format for RFCs, described in <xref target="I-D.iab-html-rfc"/> assigns style guidance to an RFC Editor-defined Cascading Style Sheet (CSS).  This CSS will be embedded in the published HTML, and may be overridden by a locally defined CSS as desired.  The embedded, default CSS as included by the RFC Editor is expected to take into account accessibility needs and be built along a responsive design model.</t>
+<t>The HTML format for RFCs, described in <xref target="RFC7992"/>, assigns
+style guidance to a Cascading Style Sheet (CSS) specifically defined for the
+RFC Series.  This CSS will be embedded in the published HTML, and it may be
+overridden by a locally defined CSS, as desired.  The embedded, default CSS as
+included by the RFC Editor is expected to take into account accessibility
+needs and to be built along a responsive design model.</t> 
 
-<t>This document describes the requirements for the default CSS used by the RFC Editor. Unless called out otherwise, any styling provided for these classes must not alter the natural language content in any visible way.  Many of these classes are provided to mark the elements semantically: elements using them should simply inherit their surrounding styling. Exceptions are called out below. A class is identified for Internet Drafts, such that certain features found only in I-Ds may be made distinct in some fashion within those drafts.  The requirements will only be applied to HTML documents published by the RFC Editor as per <xref target="I-D.iab-rfc-framework"/>.</t>
+<t>This document describes the requirements for the default CSS used by the
+RFC Editor. Unless called out otherwise, any styling provided for these
+classes must not alter the natural language content in any visible way.  Many
+of these classes are provided to mark the elements semantically: elements
+using them should simply inherit their surrounding styling. Exceptions are
+listed below. A class is identified for Internet-Drafts, such that certain
+features found only in I-Ds may be made distinct in some fashion within those
+drafts.  The requirements will only be applied to HTML documents published by
+the RFC Editor as per <xref target="RFC7990"/>.</t> 
 
-<t>The details described in this document are expected to change based on experience gained in implementing the RFC production center's toolset. Revised documents will be published capturing those changes as the toolset is completed. Other implementers must not expect those changes to remain backwards-compatible with the details described in this document.</t>
+<t>The details included in this document are expected to change based on
+experience gained in implementing the new publication toolsets. 
+Revised documents will be published capturing those changes as the toolsets are
+completed. Other implementers must not expect those changes to remain
+backwards compatible with the details included in this document.</t> 
 
 </section>
 <section anchor="design-goals" title="Design Goal">
@@ -63,9 +83,9 @@
 <section anchor="general-requirements" title="General Requirements">
 
 <t><list style='symbols'>
-  <t>Support the display of the semantic HTML described in <xref target="I-D.iab-html-rfc"/>.</t>
+  <t>Support the display of the semantic HTML described in <xref target="RFC7992"/>.</t>
   <t>Follow best practice for accessibility, as defined by the W3C's "Best Practices for Authoring HTML" <xref target="HTMLBP"/>.</t>
-  <t>Follow best practice for mobile devices, as defined by the W3C's "Best Practices for Authoring HTML."</t>
+  <t>Follow best practice for mobile devices, as defined by the W3C's "Best Practices for Authoring HTML".</t>
   <t>Allow for a broad range of internationalized scripts.</t>
 </list></t>
 
@@ -74,7 +94,7 @@
 
 <section anchor="title-page-header" title="Title Page Header">
 
-<t>The document header must be at the top of the document and include all information described in the "Style Guide" and "RFC Streams, Headers, and Boilerplates" <xref target="RFC7322"/> <xref target="RFC5741"/></t>
+<t>The document header must be at the top of the document and include all information described in "RFC Style Guide" <xref target="RFC7322"/> and "RFC Streams, Headers, and Boilerplates" <xref target="RFC5741"/>.</t>
 
 </section>
 <section anchor="body" title="Body">
@@ -89,7 +109,7 @@
   <t>Tables must allow for distinct header rows</t>
   <t>Paragraphs should include a hover-over paragraph identifier</t>
 </list></t>
-  <t>All anchor tags and URLs should be clearly distinguished as links, for example through the use of color and/or text decoration, following appropriate accessibility standards.</t>
+  <t>All anchor tags and URLs should be clearly distinguished as links, for example, through the use of color and/or text decoration, following appropriate accessibility standards.</t>
 
 </section>
 <section anchor="font-choices" title="Font Choices">
@@ -105,15 +125,15 @@
 </section>
 <section anchor="printing" title="Printing">
 
-<t>The CSS must include support for a printer-friendly output.  The print rules should be a part of the embedded style sheet; consumers of an RFC may develop their own print-specific style sheet as desired.</t>
+<t>The CSS must include support for a printer-friendly output.  The print rules should be a part of the embedded style sheet; consumers of an RFC may develop their own print-specific style sheet, as desired.</t>
 
 </section>
 <section anchor="lists" title="Lists">
-  <t>Lists should provide ample whitespace between list elements for legibility unless a ‘compact’ class is specified (e.g., .dlCompact, .ulCompact, .olCompact).</t>
+  <t>Lists should provide ample whitespace between list elements for legibility unless a 'compact' class is specified (e.g., .dlCompact, .ulCompact, .olCompact).</t>
 </section>
 
 <section anchor="css-classes" title="CSS Classes and Attributes">
-<t>This section describes the CSS classes that result in specific changes to the natural language content of a document. A full list of available classes, not including basic selectors, are included in "Appendix A".</t>
+<t>This section describes the CSS classes that result in specific changes to the natural language content of a document. A full list of available classes, not including basic selectors, is included in Appendix A.</t>
 
   <section anchor="alignCenter" title=".alignCenter">
    <t>To be used with '.artwork' to indicate the figure should align in the center of the page flow.</t>
@@ -124,7 +144,7 @@
   </section>
 
   <section anchor="artwork" title=".artwork">
-  <t>These classes will mostly be styled as part of .artwork.  Specific
+  <t>These classes will mostly be styled as part of '.artwork'.  Specific
   classes may include '.art-ascii-art' and '.art-svg'. Artwork will be held 
   in its own block of space, centered in the page flow, and will not float. 
   Images should have a max width of 100% so views will scale properly across
@@ -183,7 +203,7 @@
     <t>Notes should be emphasized and distinct from normal paragraph text.
     </t>
     <section anchor="rfcEditorRemove" title=".rfcEditorRemove">
-      <t>An RFC Editor note may be added after the standard boilerplage. It should be visually distinct to highlight final removal of the note by the RFC Editor.</t>
+      <t>An RFC Editor note may be added after the standard boilerplate. It should be visually distinct to highlight final removal of the note by the RFC Editor.</t>
     </section>
   </section>
 
@@ -198,10 +218,10 @@
   </section>
 
   <section anchor="pilcrow" title=".pilcrow">
-    <t>Pilcrows, when used as described in draft-iab-html-rfc, should 
+    <t>Pilcrows, when used as described in RFC 7992, should 
        appear at the end of the paragraph, artwork, or sourcecode segment. 
        They should not appear until moused-over. They should not show when 
-       printed, and should not be selected when copied with a copy/paste 
+       printed, and they should not be selected when copied with a copy/paste 
        function.</t>
   </section>
 
@@ -215,7 +235,7 @@
 
   <section anchor="sourcecode" title=".sourcecode">
     <t>Code examples or components should be in a fixed-width font if the 
-       human language used has an available fixed-width font option, and 
+       human language used has an available fixed-width font option, and they
        should be visually distinct. If no fixed-width font is available, 
        use the default font for that human language.</t>
   </section>
@@ -249,48 +269,16 @@
 
 <section anchor="security-considerations" title="Security Considerations">
 
-<t>Security vulnerabilities can be introduced through the CSS.  How much detail do we need to go into here to say "don't do foolish things and introduce security issues?"</t>
+<t>
+Security vulnerabilities can be introduced through the CSS, as with CSS
+injection attacks <xref target="CSSATTACK" />.  In order to avoid or mitigate any attack
+vectors here, the CSS used must comply with the current CSS Specifications from
+the W3C.
+</t>
 
 </section>
 
-<section anchor="iana-considerations" title="IANA Considerations">
 
-<t>This draft contains no action for IANA</t>
-
-</section>
-<section anchor="acknowledgements" title="Acknowledgements">
-<t>With many thanks to the RFC Format Design Team for their efforts in making this transition successful: Nevil Brownlee (ISE), Tony Hansen, Joe Hildebrand, Paul Hoffman, Ted Lemon, Julian Reschke, Adam Roach, Alice Russo, Robert Sparks (Tools Team liaison), and Dave Thaler.</t>
-<t>Additional thanks to Arlen Johnson of Spherical Cow Group, LLC, for his assistance in clarifying the requirements in more CSS designer-friendly language.</t>
-
-</section>
-
-<section anchor="change-log" title="Draft Change Log">
-<t>To be removed before publication</t>
-<section anchor="draft-iab-rfc-css-01" title="Changes from draft-iab-rfc-css-00 to -01">
-<t>added .refInstance, .ulEmpty, .ears, .left, .right, .center as per HTML draft</t>
-<t>removed .comma, .closeParen, .openParen, .fullStop, .referenceGroup as per HTML draft</t>
-</section>
-<section anchor="change-to-iab" title="Changes from draft-flanagan-rfc-css to draft-iab-rfc-css">
-<t>revised draft name; no major changes</t>
-</section>
-<section anchor="change-03" title="Changes from -02 to -03">
-<t>Moved Appendix to correct location; fixed typos; moved lang-* to Appendix,</t>
-</section>
-<section anchor="change-02" title="Changes from -01 to -02">
-<t>Adjusted class names where possible to a common naming pattern (CamelCase).</t>
-<t>Added alignCenter, alignRight, dlHanging, ulEmpty</t>
-</section>
-<section anchor="change-01" title="Changes from -00 to -01">
-<t>Moved full list of classes to Appendix; only discussed classes that will have visible changes to the text in the body</t>
-<t>Introduction: text regarding expected future changes added.</t>
-<t>Body: added text regarding anchors and tags; this text also applied to .relref, .url, .xref</t>
-<t>Artwork: clarified non-floating behavior of artwork</t>
-<t>List behavior: clarified the behavior of .ulCompact, .olCompact, and .dlCompact as distinct from default list behavior; clarified behavior of .dlparallel</t>
-<t>Note: clarified text around behavior of notes</t>
-<t>RFC: added additional class to allow the CSS to distinguish between RFCs and Internet Drafts if desired</t>
-<t>TOC: clarified text around behavior of table of contents</t>
-</section>
-</section>
 
   </middle>
 
@@ -304,20 +292,88 @@
     <author >
       <organization>W3C</organization>
     </author>
-    <date year="n.d."/>
+    <date year=""/>
   </front>
 </reference>
 &RFC5741;
 &RFC7322;
-&I-D.iab-html-rfc;
-&I-D.iab-rfc-framework;
+
+<!--&I-D.iab-html-rfc; companion document RFC 7992-->
+
+<reference anchor='RFC7992' target='http://www.rfc-editor.org/info/rfc7992'>
+<front>
+<title>HTML Format for RFCs</title>
+<author initials='J' surname='Hildebrand' fullname='Joe Hildebrand' role="editor">
+    <organization />
+</author>
+
+<author initials='P' surname='Hoffman' fullname='Paul E. Hoffman'>
+    <organization />
+</author>
+
+<date month='December' year='2016' />
+
+<abstract><t>In order to meet the evolving needs of the Internet community, the format for RFCs is changing from a plain-text, ASCII-only format to a canonical XML format that will in turn be rendered into several publication formats.  This document defines the HTML format that will be rendered for an RFC or Internet-Draft.</t></abstract>
+
+</front>
+
+<seriesInfo name='RFC' value='7992' />
+<seriesInfo name="DOI" value="10.17487/RFC7992"/>
+</reference>
+
+
+<!--&I-D.iab-rfc-framework; companion document RFC 7990 -->
+
+<reference anchor='RFC7990' target='http://www.rfc-editor.org/info/rfc7990'>
+<front>
+<title>RFC Format Framework</title>
+
+<author initials='H' surname='Flanagan' fullname='Heather Flanagan'>
+    <organization />
+</author>
+
+<date month='December' year='2016' />
+
+<abstract><t>The canonical format for the RFC Series has been plain-text, ASCII- encoded for several decades.  After extensive community discussion and debate, the RFC Editor will be transitioning to XML as the canonical format using the XML2RFC version 3 vocabulary.  Different publication formats will be rendered from that base document.  These changes are intended to increase the usability of the RFC Series by offering documents that match the needs of a wider variety of stakeholders.  With these changes, however, comes an increase in complexity for authors, consumers, and the publisher of RFCs.  This document serves as the framework that describes the problems being solved and summarizes the many documents that capture the specific requirements for each aspect of the change in format.</t></abstract>
+
+</front>
+
+<seriesInfo name='RFC' value='7990' />
+<seriesInfo name="DOI" value="10.17487/RFC7990"/>
+</reference>
+
+</references>
+
+<references title='Informative References'>
+   <reference anchor="CSSATTACK" target="https://doi.org/10.1145/1866307.1866376">
+
+     <front>
+       <title>Protecting browsers from cross-origin CSS attacks</title>
+
+       <author initials="L-S" surname="Huang" fullname="Lin-Shung Huang">
+         <organization />
+       </author>
+       <author initials="Z" surname="Weinberg" fullname="Zack Weinberg">
+         <organization />
+       </author>
+       <author initials="C" surname="Evans" fullname="Chris Evans">
+         <organization />
+       </author>
+       <author initials="C" surname="Jackson" fullname="Collin Jackson">
+         <organization />
+       </author>
+
+       <date year="2010" />
+     </front>
+     <seriesInfo name="In Proceedings of the 17th ACM conference on Computer and communications security" value="(CCS '10)" />
+<seriesInfo name="" value="pp. 619-629"/>
+   </reference>
 
 
     </references>
 
-<section anchor="appendix-a" title="List of classes">
-<t>This section lists all the CSS classes. Except for those also listed
-above in section 7, none of these result in specific changes to the
+<section anchor="appendix-a" title="List of Classes">
+<t>This section lists all the CSS classes. Except for those also listed in <xref target="css-classes"/>, none of these result in specific changes to the
 natural language content of a document.</t>
 <t>
 <list style="symbols">
@@ -416,6 +472,40 @@ natural language content of a document.</t>
 </t>
 </section>
 
+  <section title="IAB Members at the Time of Approval" numbered="no">
+
+  <t>The IAB members at the time this memo was approved were (in alphabetical order):                                                       
+
+<?rfc subcompact="yes" ?>
+<list>
+ <t>Jari Arkko</t>
+ <t>Ralph Droms</t>
+ <t>Ted Hardie</t>
+ <t>Joe Hildebrand</t>
+ <t>Russ Housley</t>
+<t>Lee Howard</t>
+ <t>Erik Nordmark</t>
+ <t>Robert Sparks</t>
+ <t>Andrew Sullivan</t>
+ <t>Dave Thaler</t>
+<t>Martin Thomson</t>
+ <t>Brian Trammell</t>
+ <t>Suzanne Woolf</t>
+</list>
+<?rfc subcompact="no" ?>
+  </t>
+  </section>
+
+<section anchor="acknowledgements" title="Acknowledgements" numbered="no">
+<t>With many thanks to the RFC Format Design Team for their efforts in making
+this transition successful: Nevil Brownlee (ISE), Tony Hansen, Joe Hildebrand,
+Paul Hoffman, Ted Lemon, Julian Reschke, Adam Roach, Alice Russo, Robert
+Sparks (Tools Team liaison), and Dave Thaler.</t> 
+<t>Additional thanks to Arlen Johnson of Spherical Cow Group, LLC, for his
+assistance in clarifying the requirements in more CSS-designer-friendly
+language.</t> 
+
+</section>
 
   </back>
 </rfc>
